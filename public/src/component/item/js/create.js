@@ -10,7 +10,6 @@ window.onsubmit=function(){
 }
 
 function ajaxReturn(data){
-    console.log('dao');
     window.location.href='/#/item'
 }
 

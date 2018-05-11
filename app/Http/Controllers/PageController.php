@@ -2,31 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Model\ItemList;
-use App\Http\Model\ItemImg;
 use Illuminate\Http\Request;
+use App\Http\Model\PageLists;
 
 use Illuminate\Support\Facades\Validator;
-class ItemController extends Controller
+class PageController extends Controller
 {
-    public $menu_id = 2;
+    public $menu_id = 3;
 
     public function index(){
-        $list = ItemList::get();
-        if($list){
-            foreach ($list as $key=>$item) {
-                $list[$key]['is_show']= $item['is_show'] == 1 ? '展示': '不展示';
-            }
-        }
+        $list = PageLists::get();
         returnJson(1,'获取成功',['list'=>$list]);
     }
-
     public function store(Request $request){
         //参数验证
         $rules = [
-            'item_name' => 'required',
-            'item_price' => 'required|numeric',
-            'item_rent_price' => 'required|numeric',
+            'page_name' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -36,7 +27,7 @@ class ItemController extends Controller
             $data = $request->all();
             //权限判断
             if(authCheck($this->menu_id,__FUNCTION__)){
-                $res = ItemList::insertItem($data);
+                $res = PageLists::insertPage($data);
                 if($res)
                     returnJson(1,'新增成功');
                 else
@@ -49,9 +40,8 @@ class ItemController extends Controller
     }
     public function edit($id){
         if(authCheck($this->menu_id,__FUNCTION__)){
-            $data = ItemList::find($id);
-            $imgs = ItemImg::where('item_id',$id)->pluck('img_url');
-            returnJson(1,'获取成功',['data'=>$data,'imgs'=>$imgs]);
+            $data = PageLists::find($id);
+            returnJson(1,'获取成功',['data'=>$data]);
         }
         else{
             returnJson(0,'权限不足');
@@ -60,9 +50,7 @@ class ItemController extends Controller
     public function update(Request $request,$id){
         //参数验证
         $rules = [
-            'item_name' => 'required',
-            'item_price' => 'required|numeric',
-            'item_rent_price' => 'required|numeric',
+            'page_name' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -72,7 +60,7 @@ class ItemController extends Controller
             $data = $request->all();
             //权限判断
             if(authCheck($this->menu_id,__FUNCTION__)){
-                $res = ItemList::updateItem($id,$data);
+                $res = PageLists::updatePage($id,$data);
                 if($res!==false)
                     returnJson(1,'更新成功');
                 else
@@ -85,7 +73,7 @@ class ItemController extends Controller
     }
     public function destroy($id){
         if(authCheck($this->menu_id,__FUNCTION__)){
-            $res = ItemList::deleteItem($id);
+            $res = PageLists::deletePage($id);
             if($res)
                 returnJson(1,'删除成功');
             else

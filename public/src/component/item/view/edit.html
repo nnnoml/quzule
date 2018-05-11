@@ -1,12 +1,12 @@
 <script>
-    jsSrc('item','create');
+    cssSrc('item','edit');
+    jsSrc('item','edit');
 </script>
 
 <fieldset>
-    <legend>新建商品</legend>
+    <legend>修改商品</legend>
     </fieldset>
 <form class="form-horizontal" id="data">
-
     <div class="form-group">
       <label>商品名称</label>
       <div class="input-group col-md-4">
@@ -42,6 +42,7 @@
       <input type="hidden" name="item_img" id="item_img" value='' />
       <div class="form-group">
           <label>商品图片</label>
+          <div id="warpper_back"></div>
           <div id="wrapper">
               <div id="container">
                   <!--头部，相册选择和格式选择-->

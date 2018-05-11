@@ -24,10 +24,12 @@ Route::group(['middleware' => 'UserAuth','prefix' => 'adminapi'], function () {
         Route::post('/changePwd','AdminUserController@changePwd');
         Route::post('/menu','AdminUserController@menu');
     });
+
     //商品控制器
-    Route::group(['prefix' => 'item'], function () {
-        Route::resource('/','ItemController');
-    });
+    Route::resource('/item','ItemController');
+
+    //单页控制器
+    Route::resource('/page','PageController');
 
     //图片上传入口
     Route::group(['prefix' => 'uploadapi'], function () {

@@ -15,10 +15,12 @@ function viewSrc(dir,name){
 
 //读取目标view 替换maincenter
 function mainSrc(dir,name){
+    $('#main_center').hide();
     if(typeof(name)=='undefined')
         name = dir;
     var view_url = './src/component/'+dir+'/view/'+name+'.html';
     $('#main_center').load(view_url);
+    $('#main_center').show();
 }
 
 /**
@@ -63,7 +65,7 @@ function csrf(){
         $.ajax({
             url: 'admin.php/csrf',
             async:false,  
-            cache:false,
+            // cache:false,
             type: 'get',
             dataType: "html",
             success:function(result){

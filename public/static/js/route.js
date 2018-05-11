@@ -43,3 +43,20 @@ R.route('/item', function() {
 R.route('/item/create', function() {
     mainSrc('item','create');
 });
+//修改商品
+R.route('/item/edit', function() {
+    mainSrc('item','edit');
+});
+//----------------------------------------------
+//单页列表
+R.route('/page', function() {
+    mainSrc('page','index');
+});
+//新建单页
+R.route('/page/create', function() {
+    mainSrc('page','create');
+});
+//修改单页
+R.route('/page/edit', function() {
+    mainSrc('page','edit');
+});

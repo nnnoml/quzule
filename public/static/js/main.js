@@ -19,5 +19,4 @@ $("#loginout").click(function(){
 function loginOutSuccess(){
     window.location.href='/#/login';
 }
-
 mainSrc('main');
