@@ -1,4 +1,5 @@
 //获取左侧菜单
+
 ajaxCommon('user/menu','','post',showMenu);
 function showMenu(data){
     var html = '<ul class="nav nav-sidebar">';

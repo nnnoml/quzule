@@ -1,6 +1,8 @@
 @include('common.header')
 @include('common.nav')
 
+<div class="container marketing">
+
 <hr class="featurette-divider">
 
 <!-- Carousel

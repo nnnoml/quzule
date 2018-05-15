@@ -6,6 +6,12 @@ function ajaxReturn(data){
         html += '<tr>';
         html += '<td>'+item['id']+'</td>';
         html += '<td>'+item['item_name']+'</td>';
+
+        if(item['class_name'] != null)
+            html += '<td>'+item['class_name']+'</td>';
+        else
+            html += '<td>-</td>';
+        
         html += '<td>'+item['item_price']+'</td>';
         html += '<td>'+item['item_rent_price']+'</td>';
         html += '<td>'+item['is_show']+'</td>';
@@ -36,5 +42,5 @@ $(".t_delete").click(function(){
 })
 
 function delReturn(){
-    window.location.href=admin_url+'/#/'+'item';
+    window.location.reload();
 }

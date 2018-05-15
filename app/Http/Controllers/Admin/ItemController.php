@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Model\ItemClass;
 use App\Http\Model\ItemList;
 use App\Http\Model\ItemImg;
 use Illuminate\Http\Request;
@@ -10,10 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 class ItemController extends Controller
 {
-    public $menu_id = 2;
+    public $menu_id = 3;
 
     public function index(){
-        $list = ItemList::get();
+        $list = ItemList::getList();
         if($list){
             foreach ($list as $key=>$item) {
                 $list[$key]['is_show']= $item['is_show'] == 1 ? '展示': '不展示';
@@ -26,6 +27,7 @@ class ItemController extends Controller
         //参数验证
         $rules = [
             'item_name' => 'required',
+            'item_class' => 'required|numeric',
             'item_price' => 'required|numeric',
             'item_rent_price' => 'required|numeric',
         ];
@@ -62,6 +64,7 @@ class ItemController extends Controller
         //参数验证
         $rules = [
             'item_name' => 'required',
+            'item_class' => 'required|numeric',
             'item_price' => 'required|numeric',
             'item_rent_price' => 'required|numeric',
         ];

@@ -35,6 +35,19 @@ R.route('/user/setting', function() {
     mainSrc('userSetting');
 });
 //----------------------------------------------
+//商品分类列表
+R.route('/itemClass', function() {
+    mainSrc('itemClass','index');
+});
+//新建商品分类
+R.route('/itemClass/create', function() {
+    mainSrc('itemClass','create');
+});
+//修改商品分类
+R.route('/itemClass/edit', function() {
+    mainSrc('itemClass','edit');
+});
+//----------------------------------------------
 //商品列表
 R.route('/item', function() {
     mainSrc('item','index');

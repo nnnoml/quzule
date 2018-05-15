@@ -9,7 +9,7 @@ use App\Http\Model\PageLists;
 use Illuminate\Support\Facades\Validator;
 class PageController extends Controller
 {
-    public $menu_id = 3;
+    public $menu_id = 4;
 
     public function index(){
         $list = PageLists::get();

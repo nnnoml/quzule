@@ -2,6 +2,9 @@
 @include('common.nav')
 <link href="{{asset('static/vendor/smoothproducts/css')}}/default.css" rel="stylesheet">
 <link href="{{asset('static/vendor/smoothproducts/css')}}/smoothproducts.css" rel="stylesheet">
+
+<div class="container marketing">
+
 <hr class="featurette-divider">
 
 <!-- Carousel

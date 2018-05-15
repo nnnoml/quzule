@@ -13,6 +13,19 @@ function ajaxReturn(data){
     window.location.href=admin_url+'/#/'+'item'
 }
 
+//获取分类列表
+ajaxCommon('itemClass','','get',optReturn);
+
+function optReturn(data){
+    var html = '';
+    data.list.forEach(function(item, index){
+        html += '<option value='+item['id']+'>'+item['class_name']+'</option>';      
+    });
+
+    $("#class_opt").html(html);
+}
+
+
 //开关
 $(function(){
     $('.btn-toggle > a').click(function(){

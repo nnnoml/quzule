@@ -28,7 +28,7 @@ function ajaxReturn(data){
     $("input[name='item_name']").val(data.data.item_name);
     $("input[name='item_price']").val(data.data.item_price);
     $("input[name='item_rent_price']").val(data.data.item_rent_price);
-    
+    class_opt = data.data.item_class;
     $("#is_show").val(data.data.is_show);
 
     if(data.data.is_show == 1)
@@ -52,7 +52,21 @@ function ajaxReturn(data){
         $("#warpper_back").html(img_list);
         $("#item_img").val(input_img_list);
     }
+
+    //获取分类列表
+    ajaxCommon('itemClass','','get',optReturn);
 }
+
+function optReturn(data){
+    var html = '';
+    data.list.forEach(function(item, index){
+        html += '<option value='+item['id']+'>'+item['class_name']+'</option>';      
+    });
+
+    $("#class_opt").html(html);
+    $("#class_opt").find("option[value='"+class_opt+"']").attr("selected",true);
+}
+
 
 window.onsubmit=function(){
     var detail = um_d.getContent();

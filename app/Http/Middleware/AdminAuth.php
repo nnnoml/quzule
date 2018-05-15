@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class UserAuth
+class AdminAuth
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,8 @@ class UserAuth
      */
     public function handle($request, Closure $next)
     {
-        if(!session()->has('user_id')){
-            if($request->ajax())
-                returnJson(302,'登录超时');
-            else
-                header('Location:/');
+        if(!session()->has('admin_user_id')){
+            returnJson(302,'登录超时');
             exit;
         }
         else

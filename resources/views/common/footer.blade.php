@@ -14,4 +14,5 @@
 <script src="{{asset('static/js')}}/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{asset('static/js')}}/ie10-viewport-bug-workaround.js"></script>
+<script src="{{asset('static/js')}}/index-common.js"></script>
 </html>

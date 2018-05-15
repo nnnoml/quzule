@@ -11,7 +11,9 @@ function viewSrc(dir,name){
 
     var view_url = './src/component/'+dir+'/view/'+name+'.html';
     //替换整个页面
-    $('#main').load(view_url);
+    $('#main').load(view_url,function(){
+        $("html").show();
+    });
 }
 
 //读取目标view 替换maincenter
@@ -20,7 +22,9 @@ function mainSrc(dir,name){
     if(typeof(name)=='undefined')
         name = dir;
     var view_url = './src/component/'+dir+'/view/'+name+'.html';
-    $('#main_center').load(view_url);
+    $('#main_center').load(view_url,function(){
+        $("html").show();
+    });
     $('#main_center').show();
 }
 
@@ -107,8 +111,9 @@ function ajaxCommon(url,param,reqType,callback){
             dataType: "json",
             success:function(data){
                 if(data.code === 1){
-                    if(typeof(callback) != 'undefined')
+                    if(typeof(callback) != 'undefined'){
                         callback(data);
+                    }
                 }
                 else if(data.code === 302){
                     window.location.href=admin_url+'/#/'+'login';

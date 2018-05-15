@@ -10,7 +10,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">趣租乐</a>
+                    <a class="navbar-brand" href="/">趣租乐</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -27,11 +27,21 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
-                        <li><a href="#about">免押金申请</a></li>
+                        <li><a href="/userApply">免押金申请</a></li>
                         <li><a href="/page">租赁规则</a></li>
                     </ul>
                     <ul class="nav navbar-nav" style="float:right;">
-                        <li class=""><a href="/login">登录</a></li>
+                        @if (isset($user_info['user_id']))
+                        <li class="">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎你 {{$user_info['user_name']}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/userCenter" >个人中心</a></li>
+                                <li><a href="#" id="loginOut">退出登陆</a></li>
+                            </ul>
+                        </li>
+                        @else
+                            <li class=""><a href="/login">登录</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

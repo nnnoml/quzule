@@ -33,5 +33,5 @@ $(".t_delete").click(function(){
 })
 
 function delReturn(){
-    window.location.href=admin_url+'/#/'+'page';
+    window.location.reload();
 }

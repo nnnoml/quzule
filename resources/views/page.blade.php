@@ -1,6 +1,7 @@
 @include('common.header')
 @include('common.nav')
 <link href="{{asset('static/css')}}/index-blog.css" rel="stylesheet">
+<div class="container marketing">
 
 <hr class="featurette-divider">
 <!-- Carousel
