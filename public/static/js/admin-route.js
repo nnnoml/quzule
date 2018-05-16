@@ -73,3 +73,12 @@ R.route('/page/create', function() {
 R.route('/page/edit', function() {
     mainSrc('page','edit');
 });
+//----------------------------------------------
+//审核资料列表
+R.route('/apply', function() {
+    mainSrc('apply','index');
+});
+//审核资料详细 & 操作页
+R.route('/apply/detail', function() {
+    mainSrc('apply','detail');
+});

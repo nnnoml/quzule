@@ -12,24 +12,29 @@ class ItemClassController extends Controller
     public $menu_id = 2;
 
     public function index(){
-        $list = ItemClass::get();
+        if(authCheck($this->menu_id,__FUNCTION__)) {
+            $list = ItemClass::get();
 
-        $format_list = [];
-        if($list){
-            $list = $this->getSon($list);
-            foreach($list as $key=>$vo){
-                $format_list[] = $list[$key];
-                if(isset($list[$key]['children'])){
-                    foreach($list[$key]['children'] as $key2=>$vo2){
-                        $foo = $list[$key]['children'][$key2];
-                        $foo['class_name'] = '&nbsp;&nbsp;&nbsp;&nbsp;|------ '.$vo2['class_name'];
-                        $format_list[] = $foo;
+            $format_list = [];
+            if ($list) {
+                $list = $this->getSon($list);
+                foreach ($list as $key => $vo) {
+                    $format_list[] = $list[$key];
+                    if (isset($list[$key]['children'])) {
+                        foreach ($list[$key]['children'] as $key2 => $vo2) {
+                            $foo = $list[$key]['children'][$key2];
+                            $foo['class_name'] = '&nbsp;&nbsp;&nbsp;&nbsp;|------ ' . $vo2['class_name'];
+                            $format_list[] = $foo;
+                        }
                     }
                 }
             }
-        }
 
-        returnJson(1,'获取成功',['list'=>$format_list]);
+            returnJson(1, '获取成功', ['list' => $format_list]);
+        }
+        else{
+            returnJson(0,'权限不足');
+        }
     }
 
     public function getSon($list, $pk = 'id', $pid = 'pid', $rootid = 0){

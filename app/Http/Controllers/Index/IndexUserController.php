@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\IndexUsers;
+use App\Http\Model\IndexApply;
 
 use Illuminate\Support\Facades\Validator;
 class IndexUserController extends Controller
@@ -92,8 +93,41 @@ class IndexUserController extends Controller
         return view('user_center',compact('user_info'));
     }
 
+    //用户提交申请
     public function userApply(){
         $user_info = $this->user_info;
         return view('user_apply',compact('user_info'));
+    }
+    //申请入库
+    public function userApplyDo(Request $request){
+        //参数验证
+        $messages = [
+            'required' => ':attribute must be input.',
+        ];
+
+        $rules = [
+            'comp_name' => 'required',
+            'comp_reg_num' => 'required',
+            'comp_reg_time' => 'required',
+            'license_input' => 'required',
+            'legal_person_name' => 'required',
+            'legal_person_id' => 'required',
+            'legal_person_card_front_input' => 'required',
+            'legal_person_card_back_input' => 'required',
+            'area_img_input' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules,$messages);
+        if ($validator->fails()) {
+            returnJson(0,json_encode($validator->messages()));
+        }
+        else{
+            $data = $request->all();
+            //取用户数据
+            $res = IndexApply::insertApply($data);
+            if($res)
+                returnJson(1,'成功');
+            else
+                returnJson(0,'提交失败');
+        }
     }
 }

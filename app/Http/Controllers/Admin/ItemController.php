@@ -14,13 +14,18 @@ class ItemController extends Controller
     public $menu_id = 3;
 
     public function index(){
-        $list = ItemList::getList();
-        if($list){
-            foreach ($list as $key=>$item) {
-                $list[$key]['is_show']= $item['is_show'] == 1 ? '展示': '不展示';
+        if(authCheck($this->menu_id,__FUNCTION__)) {
+            $list = ItemList::getList();
+            if ($list) {
+                foreach ($list as $key => $item) {
+                    $list[$key]['is_show'] = $item['is_show'] == 1 ? '展示' : '不展示';
+                }
             }
+            returnJson(1, '获取成功', ['list' => $list]);
         }
-        returnJson(1,'获取成功',['list'=>$list]);
+        else{
+            returnJson(0,'权限不足');
+        }
     }
 
     public function store(Request $request){

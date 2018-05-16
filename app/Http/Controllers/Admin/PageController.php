@@ -12,8 +12,13 @@ class PageController extends Controller
     public $menu_id = 4;
 
     public function index(){
-        $list = PageLists::get();
-        returnJson(1,'获取成功',['list'=>$list]);
+        if(authCheck($this->menu_id,__FUNCTION__)) {
+            $list = PageLists::get();
+            returnJson(1, '获取成功', ['list' => $list]);
+        }
+        else{
+            returnJson(0,'权限不足');
+        }
     }
     public function store(Request $request){
         //参数验证

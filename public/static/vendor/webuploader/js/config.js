@@ -148,10 +148,10 @@
             },
             dnd: '#dndArea',
             paste: '#uploader',
-            swf: '../../dist/Uploader.swf',
+            swf: '/static/vendor/webuploader/Uploader.swf',
             chunked: false,
             chunkSize: 512 * 1024,
-            server: '/admin.php/adminapi/uploadapi/itemImg',
+            server: '/adminapi/uploadapi/itemImg',
             // runtimeOrder: 'flash',
 
             accept: {

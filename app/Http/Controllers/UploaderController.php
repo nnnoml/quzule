@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class UploaderController extends Controller
 {
+    //TODO 整体过滤没做
     public function itemImg(Request $request){
         if(!$request->hasFile('file')){
             echo "hasfile";
@@ -36,4 +37,18 @@ class UploaderController extends Controller
             echo json_encode($ret);
         }
     }
+
+    public function apply(Request $request){
+        if(!$request->hasFile('file')){
+            echo "hasfile";
+        }
+        $img = $request->file('file');
+        $path = $img->store(date('Ymd'),'apply');
+        if($img->isValid()) {
+            $ret["url"] = config('filesystems.disks.apply')['url'] . '/' . $path;
+            $ret["state"] = 'SUCCESS';
+            echo json_encode($ret);
+        }
+    }
+
 }

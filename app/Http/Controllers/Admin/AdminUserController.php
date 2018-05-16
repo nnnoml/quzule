@@ -35,8 +35,8 @@ class AdminUserController extends Controller
                     $auth_list = AdminRoleUsers::authList($user_info->id);
                     if(empty($auth_list)) returnJson(0,'用户权限异常');
                     else{
-                        session()->put('user_auth',json_encode($auth_list));
-                        session()->put('user_id',$user_info->id);
+                        session()->put('admin_user_auth',json_encode($auth_list));
+                        session()->put('admin_user_id',$user_info->id);
                         returnJson(1,'成功');
                     }
                 }
@@ -49,8 +49,8 @@ class AdminUserController extends Controller
 
     //登出
     public function loginOut(){
-        session()->forget('user_id');
-        session()->forget('user_auth');
+        session()->forget('admin_user_id');
+        session()->forget('admin_user_auth');
         returnJson(1,'成功');
     }
 
@@ -70,7 +70,7 @@ class AdminUserController extends Controller
         else{
             $old_pwd = $request->input('old_pwd');
             $new_pwd1 = $request->input('new_pwd1');
-            $user_id = session()->get('user_id');
+            $user_id = session()->get('admin_user_id');
             $res = AdminUsers::changePwd($user_id,$old_pwd,$new_pwd1);
             if($res === false)
                 returnJson(0,'修改失败');
@@ -83,7 +83,8 @@ class AdminUserController extends Controller
 
     //获取菜单
     public function menu(){
-        $auth = session()->get('user_auth');
+        $auth = session()->get('admin_user_auth');
+
         if(empty($auth))
             returnJson(0,'权限有误，请重新登录');
         else{

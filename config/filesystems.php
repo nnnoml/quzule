@@ -55,6 +55,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'apply' => [
+            'driver' => 'local',
+            'root' => public_path('upload/apply'),
+            'url' => '/upload/apply',
+        ],
         'item_img' => [
             'driver' => 'local',
             'root' => public_path('upload/itemImg'),

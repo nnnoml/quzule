@@ -1,0 +1,80 @@
+<script>
+    jsSrc('apply','detail');
+</script>
+<style>
+  .input-group img{ max-width:200px;
+
+  }
+</style>
+<fieldset>
+    <legend>查看资料</legend>
+</fieldset>
+<div class="form-group">
+  <label>企业名称</label>
+  <div class="input-group col-md-4">
+    <input type="text" class="form-control" readonly name="comp_name" placeholder="企业名称" required autofocus>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>工商执照注册号</label>
+  <div class="input-group col-md-4">
+    <input type="text" class="form-control" readonly name="comp_reg_num" placeholder="工商执照注册号" required autofocus>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>注册时间</label>
+  <div class="input-group col-md-4">
+    <input type="text" class="form-control" readonly name="comp_reg_time" placeholder="注册时间" required autofocus>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>法人姓名</label>
+  <div class="input-group col-md-4">
+    <input type="text" class="form-control" readonly name="legal_person_name" placeholder="法人姓名" required autofocus>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>法人身份证号</label>
+  <div class="input-group col-md-4">
+    <input type="text" class="form-control" readonly name="legal_person_id" placeholder="法人身份证号" required autofocus>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>营业执照</label>
+  <div class="input-group" id="license">
+  </div>
+</div>
+
+<div class="form-group">
+    <label>法人身份证</label>
+    <div class="input-group" id="legal_person_card">
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label>经营场地租赁合同</label>
+      <div class="input-group" id="area_img">
+      </div>
+    </div>
+
+<form class="form-horizontal" id="data">
+    <input type="hidden" name="check_status" id="check_status" value='0' />
+    <div class="form-group">
+    <label>审核</label>
+    <div class="btn-group btn-toggle"> 
+        <a class="btn btn-sm btn-default" data='1'>通过</a>
+        <a class="btn btn-sm btn-default" data='2'>驳回</a>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <div class="">
+        <button type="submit" class="btn btn-default">保存</button>
+      </div>
+    </div>
+  </form>

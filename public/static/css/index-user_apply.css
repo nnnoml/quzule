@@ -1722,16 +1722,6 @@ i {
     position: relative
 }
 
-.presNav .avatar:hover::before {
-    opacity: .2;
-    filter: alpha(opacity=20)
-}
-
-.presNav .avatar:hover::after {
-    opacity: 1;
-    filter: alpha(opacity=100)
-}
-
 .presNav .avatar img {
     width: 100%
 }

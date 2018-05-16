@@ -22,7 +22,7 @@ function returnJson($code,$data='',$other_arr='')
 /**
  * 根据频道和操作判断该用户是否可以对栏目进行操作
  * @param $menu_id 菜单id
- * @param $handel  操作方式 store edit update show destroy
+ * @param $handel  操作方式 index store edit update show destroy
  * return true false
  */
 function authCheck($menu_id,$handel){
@@ -31,11 +31,12 @@ function authCheck($menu_id,$handel){
         case 'store': $handle_id = 1;break;
         case 'edit': $handle_id = 2;break;
         case 'update': $handle_id = 2;break;
+        case 'index': $handle_id = 4;break;
         case 'show': $handle_id = 4;break;
         case 'destroy': $handle_id = 8;break;
     }
 
-    $user_auth = session()->get('user_auth');
+    $user_auth = session()->get('admin_user_auth');
     if(empty($user_auth) || $handle_id == 0){
         return false;
     }
