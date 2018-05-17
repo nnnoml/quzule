@@ -16,19 +16,23 @@ Route::get('/csrf',function(){
 //------------------------------------前台
 //前台 不需要auth的路由
 Route::get('/','Index\IndexController@index');
+//单页
 Route::get('/page/{id?}','Index\IndexController@page');
-Route::get('/product','Index\IndexController@product');
-Route::get('/product/{id?}','Index\IndexController@productDetail');
-//前台登录
-Route::get('/login','Index\IndexController@login');
-//test
-Route::get('/product_detail','Index\IndexController@product_detail');
+//产品
+Route::get('/product/{list?}','Index\IndexController@product');
+Route::get('/product/{list}/{id}','Index\IndexController@productDetail');
 
+//前台登录
+Route::get('/login','Index\IndexUserController@login');
+//前台注册
+Route::get('/register','Index\IndexUserController@register');
 
 //前台接口路由
 Route::group(['prefix' => 'indexapi'], function () {
     //登录
-    Route::post('/login','Index\IndexUserController@login');
+    Route::post('/login','Index\IndexUserController@loginDo');
+    //注册
+    Route::post('/register','Index\IndexUserController@registerDo');
     //需要auth的接口路由
     Route::group(['middleware' => 'UserAuth'], function () {
         //登出
@@ -69,6 +73,9 @@ Route::group(['middleware' => 'AdminAuth','prefix' => 'adminapi'], function () {
 
     //审核控制器
     Route::resource('/apply','Admin\ApplyController');
+
+    //前台用户控制器
+    Route::resource('/indexUser','Admin\IndexUserController');
 
     //图片上传入口
     Route::group(['prefix' => 'uploadapi'], function () {

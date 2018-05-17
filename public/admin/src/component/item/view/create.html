@@ -48,6 +48,14 @@
     </div>
     </div>
 
+    <input type="hidden" name="item_avatar" id="item_avatar" value='' />
+    <div class="form-group">
+        <label>商品封面</label>
+        <div id="avatar_img"></div>
+
+        <div id="avatar" class="upload_list" style="width:100px;">选择图片</div>
+    </div>
+
     <input type="hidden" name="item_img" id="item_img" value='' />
     <div class="form-group">
         <label>商品图片</label>
@@ -58,7 +66,7 @@
                 <div id="uploader">
                     <div class="queueList">
                         <div id="dndArea" class="placeholder">
-                            <div id="filePicker"></div>
+                            <div id="filePicker" class="upload_list"></div>
                             <p>或将照片拖到这里，单次最多可选10张</p>
                         </div>
                     </div>
@@ -97,7 +105,7 @@
     <link rel="stylesheet" type="text/css" href="../static/vendor/webuploader/css/webuploader.css" />
     <link rel="stylesheet" type="text/css" href="../static/vendor/webuploader/css/style.css" />
     <script type="text/javascript" charset="utf-8" src="../static/vendor/webuploader/js/webuploader.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../static/vendor/webuploader/js/config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../static/vendor/webuploader/js/admin-config.js"></script>
     <!--批量传图-->
 
     <!--编辑器-->

@@ -26,4 +26,8 @@ class ItemClass extends Model
     public static function deleteItemClass($id){
         return self::where('id',$id)->orwhere('pid',$id)->delete();
     }
+
+    public  static function className($id){
+        return self::where('id',$id)->value('class_name');
+    }
 }

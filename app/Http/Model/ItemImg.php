@@ -23,4 +23,8 @@ class ItemImg extends Model
             return $return;
         }
     }
+
+    public static function getImgList($id){
+        return self::where('item_id',$id)->get();
+    }
 }

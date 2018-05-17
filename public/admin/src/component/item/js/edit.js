@@ -1,4 +1,3 @@
-
 //实例编辑器
 var um_d = UM.getEditor('item_detail');
 var um_p = UM.getEditor('item_parame');
@@ -28,6 +27,14 @@ function ajaxReturn(data){
     $("input[name='item_name']").val(data.data.item_name);
     $("input[name='item_price']").val(data.data.item_price);
     $("input[name='item_rent_price']").val(data.data.item_rent_price);
+
+    if(data.data.item_avatar != null){
+        $("#avatar_img").html('');
+        $("#avatar_img").append("<img style='max-width:100px;' src='"+data.data.item_avatar+"' />");
+        $("input[name='item_avatar']").val(data.data.item_avatar);
+    }
+
+    
     class_opt = data.data.item_class;
     $("#is_show").val(data.data.is_show);
 

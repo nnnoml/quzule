@@ -8,8 +8,9 @@ function ajaxReturn(data){
         html += '<td>'+item['page_name']+'</td>';
         html += '<td>'+item['updated_at']+'</td>';
         html += '<td><button class="btn btn-default btn-sm t_edit" data="'+item['id']+'" type="button">修改</button> ';
-        html += '<button class="btn btn-default btn-sm t_delete" data="'+item['id']+'" type="button">删除</button></td>';
-        html += '</tr>';        
+        if(item['id'] != 1)
+            html += '<button class="btn btn-default btn-sm t_delete" data="'+item['id']+'" type="button">删除</button>';
+        html += '</td></tr>';
     });
 
     $("#tbody").html(html);

@@ -7,25 +7,15 @@
 <div class="container">
 
     <form class="form-signin">
-        <h2 class="form-signin-heading">登录</h2>
+        <h2 class="form-signin-heading">注册</h2>
         <label for="inputEmail" class="sr-only">手机号</label>
         <input type="tel" name="user_name" class="form-control" placeholder="手机号" required autofocus>
+        <label for="inputPassword" class="sr-only">短信验证码</label>
+        <input type="password" name="password" class="form-control" placeholder="验证码" required>
         <label for="inputPassword" class="sr-only">密码</label>
         <input type="password" name="password" class="form-control" placeholder="密码" required>
-<!--        <div class="checkbox">-->
-<!--            <label>-->
-<!--                <input type="checkbox" value="remember-me"> Remember me-->
-<!--            </label>-->
-<!--        </div>-->
-        <div class="checkbox">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: left;">
-                忘记密码？
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: right;">
-                <a href="/register">快速注册</a>
-            </div>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">reg in</button>
     </form>
 
 </div> <!-- /container -->

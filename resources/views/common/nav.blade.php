@@ -14,33 +14,33 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li class="dropdown">
+                        <li @if(isset($nav) && $nav=="home") class="active" @endif><a href="/">Home</a></li>
+                        <li class="dropdown @if(isset($nav) && $nav=="product") active @endif">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">全部商品 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="/product">全部商品</a></li>
+                                @foreach ($menu as $key=>$vo)
+                                @if(isset($vo['has_son']) && $key>0)
                                 <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                                @endif
+                                <li><a href="/product/{{$vo['id']}}">{!! $vo['class_name'] !!}</a></li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li><a href="/userApply">免押金申请</a></li>
-                        <li><a href="/page">租赁规则</a></li>
+                        <li @if(isset($nav) && $nav=="apply") class="active" @endif><a href="/userApply">免押金申请</a></li>
+                        <li @if(isset($nav) && $nav=="page") class="active" @endif><a href="/page/1">租赁规则</a></li>
                     </ul>
                     <ul class="nav navbar-nav" style="float:right;">
                         @if (isset($user_info['user_id']))
-                        <li class="">
+                        <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎你 {{$user_info['user_name']}} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/userCenter" >个人中心</a></li>
+<!--                                <li><a href="/userCenter" >个人中心</a></li>-->
                                 <li><a href="#" id="loginOut">退出登陆</a></li>
                             </ul>
                         </li>
                         @else
-                            <li class=""><a href="/login">登录</a></li>
+                            <li @if(isset($nav) && $nav=="login") class="active" @endif><a href="/login">登录</a></li>
                         @endif
                     </ul>
                 </div>

@@ -1,3 +1,7 @@
+now_pick = '';
+$(".upload_list").click(function(){
+    now_pick = $(this).attr('id');
+});
 (function( $ ){
     // 当domReady的时候开始初始化
     $(function() {
@@ -139,10 +143,8 @@
 
         // 实例化
         uploader = WebUploader.create({
-            pick: {
-                id: '#filePicker',
-                label: '点击选择图片'
-            },
+  
+            pick: '',
             formData: {
                 uid: 123
             },
@@ -165,6 +167,16 @@
             fileNumLimit: 10,
             fileSizeLimit: 50 * 1024 * 1024,    // 50 M
             fileSingleSizeLimit: 5 * 1024 * 1024    // 5 M
+        });
+
+        uploader.addButton({
+            id: '#filePicker',
+            innerHTML: '点击选择图片'
+        });
+
+        uploader.addButton({
+            id: '#avatar',
+            innerHTML: '选择封面'
         });
 
         // 拖拽时不接受 js, txt 文件。
@@ -490,26 +502,37 @@
         }
 
         uploader.onUploadProgress = function( file, percentage ) {
-            var $li = $('#'+file.id),
-                $percent = $li.find('.progress span');
+            if(now_pick == 'filePicker'){
+                var $li = $('#'+file.id),
+                    $percent = $li.find('.progress span');
 
-            $percent.css( 'width', percentage * 100 + '%' );
-            percentages[ file.id ][ 1 ] = percentage;
-            updateTotalProgress();
+                $percent.css( 'width', percentage * 100 + '%' );
+                percentages[ file.id ][ 1 ] = percentage;
+                updateTotalProgress();
+            }
         };
 
         uploader.onFileQueued = function( file ) {
-            fileCount++;
-            fileSize += file.size;
+            if(now_pick=='filePicker'){
+                fileCount++;
+                fileSize += file.size;
 
-            if ( fileCount === 1 ) {
-                $placeHolder.addClass( 'element-invisible' );
-                $statusBar.show();
+                if ( fileCount === 1 ) {
+                    $placeHolder.addClass( 'element-invisible' );
+                    $statusBar.show();
+                }
+                addFile( file );
+                setState( 'ready' );
+                updateTotalProgress();
+            }
+            if(now_pick == 'avatar'){
+                uploader.makeThumb( file, function( error, src ) {   //webuploader方法
+                    $("#avatar_img").html('');
+                    $("#avatar_img").append("<img src='"+src+"' />");
+                }, thumbnailWidth, thumbnailHeight );
+                uploader.upload();
             }
 
-            addFile( file );
-            setState( 'ready' );
-            updateTotalProgress();
         };
 
         uploader.onFileDequeued = function( file ) {
@@ -564,10 +587,15 @@
         uploader.on( 'uploadSuccess', function( file,response ) {
             if(response.state != 'SUCCESS') return;
             
-            img_input = $('#item_img').val();
-            img_input += response.url+',';
+            if(now_pick == 'filePicker'){
+                img_input = $('#item_img').val();
+                img_input += response.url+',';
 
-            $('#item_img').val(img_input);
+                $('#item_img').val(img_input);
+            }
+            else if(now_pick == 'avatar'){
+                $('#item_avatar').val(response.url);
+            }
         });
 
         $info.on( 'click', '.retry', function() {

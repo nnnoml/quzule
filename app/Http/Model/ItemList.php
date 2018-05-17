@@ -5,19 +5,43 @@ namespace App\Http\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-use App\Http\Model\ItemClass;
-
 class ItemList extends Model
 {
-    public static function getList(){
+    public static function getInfo(){
         $self_conn = new self;
         $class_conn = new ItemClass;
         $self_table_name = $self_conn->getTable();
         $class_table_name = $class_conn->getTable();
-         return $self_conn->from("$self_table_name as i")
+        $res = $self_conn->from("$self_table_name as i")
                      ->leftJoin("$class_table_name as c",'i.item_class','c.id')
                      ->select('i.*','c.class_name')
                      ->get();
+
+        return $res;
+    }
+
+    public static function getItem($c_id=0,$id=0,$page=0){
+        $res = self::where('is_show',1);
+        $class_id_list = [];
+        if($c_id){
+            $class_id_list[] = $c_id;
+            //把子目录也带上
+            $p_id_list = ItemClass::where('pid',$c_id)->get();
+            if($p_id_list)
+                foreach($p_id_list as $key=>$vo){
+                    $class_id_list[]=$vo['id'];
+                }
+
+            $res = $res->whereIn('item_class',$class_id_list);
+        }
+        if($page) $res->limit($page);
+        if($id){
+            $res->where('id',$id);
+            $res = $res->first();
+        }
+        else
+            $res = $res->get();
+        return $res;
     }
 
 
@@ -26,6 +50,7 @@ class ItemList extends Model
             'item_name'=>$data['item_name'],
             'item_class'=>$data['item_class'],
             'item_price'=>$data['item_price'],
+            'item_avatar'=>$data['item_avatar'],
             'item_rent_price'=>$data['item_rent_price'],
             'item_detail'=>$data['detail'],
             'item_parame'=>$data['parame'],
@@ -50,6 +75,7 @@ class ItemList extends Model
             'item_name'=>$data['item_name'],
             'item_class'=>$data['item_class'],
             'item_price'=>$data['item_price'],
+            'item_avatar'=>$data['item_avatar'],
             'item_rent_price'=>$data['item_rent_price'],
             'item_detail'=>$data['detail'],
             'item_parame'=>$data['parame'],

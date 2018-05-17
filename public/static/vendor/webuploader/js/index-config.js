@@ -120,10 +120,8 @@ $(function(){
         uploader.on( 'fileQueued', function( file ) {  // webuploader事件.当选择文件后，文件被加载到文件队列中，触发该事件。等效于 uploader.onFileueued = function(file){...} ，类似js的事件定义。
             // 创建缩略图
             //单图直接改
-            console.log(now_pick);
             if(now_pick != 'area_img'){
                 uploader.makeThumb( file, function( error, src ) {   //webuploader方法
-                    console.log(now_pick);
                     $("#"+now_pick+'_img').attr('src',src)
                 }, thumbnailWidth, thumbnailHeight );
             }

@@ -82,100 +82,29 @@
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
-
     <h3>h4. Bootstrap heading <small>Secondary text</small></h3>
     <div class="container">
         <div class="row">
+            @foreach($product as $vo)
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="speical speical-default speical-radius">
                     <div class="speical-content">
-                        <h3 class="text-special-default">小米4</h3>
-                        <p><img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI"></p>
-                        <p>超大64G ~ 仅售1880元</p>
+
+                        <h3 class="text-special-default">{{$vo['item_name']}}</h3>
+                        <p><a href="/product/{{$vo['item_class']}}/{{$vo['id']}}">
+                            <img style="width:240px;max-height:120px;" class="img-responsive img-rounded"
+                            @if($vo['item_avatar'])
+                                src="{{$vo['item_avatar']}}"
+                            @else
+                                src="holder.js/240x120/auto"
+                            @endif"
+                                 alt="{{$vo['item_name']}}">
+                            </a></p>
+                        <p>￥ {{$vo['item_rent_price']}}/月</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="speical speical-default speical-radius">
-                    <div class="speical-content">
-                        <h3 class="text-special-default">
-                            小米4
-                        </h3>
-                        <p>
-                            <img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI">
-                        </p>
-                        <p>
-                            超大64G ~ 仅售1880元
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="speical speical-default speical-radius">
-                    <div class="speical-content">
-                        <h3 class="text-special-default">
-                            小米4
-                        </h3>
-                        <p>
-                            <img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI">
-                        </p>
-                        <p>
-                            超大64G ~ 仅售1880元
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="speical speical-default speical-radius">
-                    <div class="speical-content">
-                        <h3 class="text-special-default">
-                            小米4
-                        </h3>
-                        <p>
-                            <img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI">
-                        </p>
-                        <p>
-                            超大64G ~ 仅售1880元
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="speical speical-default speical-radius">
-                    <div class="speical-content">
-                        <h3 class="text-special-default">小米4</h3>
-                        <p><img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI"></p>
-                        <p>超大64G ~ 仅售1880元</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="speical speical-default speical-radius">
-                    <div class="speical-content">
-                        <h3 class="text-special-default">小米4</h3>
-                        <p><img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI"></p>
-                        <p>超大64G ~ 仅售1880元</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="speical speical-default speical-radius">
-                    <div class="speical-content">
-                        <h3 class="text-special-default">小米4</h3>
-                        <p><img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI"></p>
-                        <p>超大64G ~ 仅售1880元</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="speical speical-default speical-radius">
-                    <div class="speical-content">
-                        <h3 class="text-special-default">小米4</h3>
-                        <p><img class="img-responsive img-rounded" src="http://www.gbtags.com/gb/laitu/240x120&text=MI/DDDDDDD/d9534f" alt="MI"></p>
-                        <p>超大64G ~ 仅售1880元</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

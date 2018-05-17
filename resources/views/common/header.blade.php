@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title>后台</title>
+    <title>@if(isset($title)){{$title}} - @endif趣租乐</title>
 
     <!-- Bootstrap -->
 

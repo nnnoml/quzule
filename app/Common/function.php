@@ -19,6 +19,28 @@ function returnJson($code,$data='',$other_arr='')
         }
     echo json_encode($res);
 }
+
+/**
+ * 获取子节点 递归
+ */
+function getSon($list, $pk = 'id', $pid = 'pid', $rootid = 0){
+$tree = array();
+foreach ($list as $key => $val) {
+    if ($val[$pid] == $rootid) {
+        //获取当前$pid所有子类
+        unset($list[$key]);
+        if (!empty($list)) {
+            $tmpChild = getSon($list, $pk, $pid, $val[$pk]);
+            if (!empty($tmpChild)) {
+                $val['children'] = $tmpChild;
+            }
+        }
+        $tree[] = $val;
+    }
+}
+return $tree;
+}
+
 /**
  * 根据频道和操作判断该用户是否可以对栏目进行操作
  * @param $menu_id 菜单id

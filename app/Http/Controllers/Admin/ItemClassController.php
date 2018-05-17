@@ -17,7 +17,7 @@ class ItemClassController extends Controller
 
             $format_list = [];
             if ($list) {
-                $list = $this->getSon($list);
+                $list = getSon($list);
                 foreach ($list as $key => $vo) {
                     $format_list[] = $list[$key];
                     if (isset($list[$key]['children'])) {
@@ -37,23 +37,6 @@ class ItemClassController extends Controller
         }
     }
 
-    public function getSon($list, $pk = 'id', $pid = 'pid', $rootid = 0){
-        $tree = array();
-        foreach ($list as $key => $val) {
-            if ($val[$pid] == $rootid) {
-                //获取当前$pid所有子类
-                unset($list[$key]);
-                if (!empty($list)) {
-                    $tmpChild = $this->getSon($list, $pk, $pid, $val[$pk]);
-                    if (!empty($tmpChild)) {
-                        $val['children'] = $tmpChild;
-                    }
-                }
-                $tree[] = $val;
-            }
-        }
-        return $tree;
-    }
 
     public function store(Request $request){
         //参数验证

@@ -3,27 +3,21 @@
 namespace App\Http\Controllers\Index;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Model\IndexUsers;
 use App\Http\Model\IndexApply;
 
 use Illuminate\Support\Facades\Validator;
-class IndexUserController extends Controller
+class IndexUserController extends IndexCommonController
 {
-    public $user_info = [];
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if(session()->has('user_id') && session()->has('user_name')){
-                $this->user_info['user_id'] = session()->get('user_id');
-                $this->user_info['user_name'] = session()->get('user_name');
-            }
-            return $next($request);
-        });
+    //登录界面
+    public function login(){
+        $return_info = $this->return_info;
+        $return_info['nav'] = 'login';
+        $return_info['title'] = '登录';
+        return view('login.login',$return_info);
     }
-
-    //登录
-    public function login(Request $request){
+    //登录操作
+    public function loginDo(Request $request){
         //参数验证
         $rules = [
             'user_name' => 'required',
@@ -51,6 +45,12 @@ class IndexUserController extends Controller
                 }
             }
         }
+    }
+
+    public function register(){
+        $return_info = $this->return_info;
+        $return_info['title'] = '注册';
+        return view('login.register',$return_info);
     }
 
     //登出
@@ -89,14 +89,17 @@ class IndexUserController extends Controller
 
     //用户中心
     public function userCenter(){
-        $user_info = $this->user_info;
-        return view('user_center',compact('user_info'));
+        $return_info = $this->return_info;
+        $return_info['title'] = '个人中心';
+        return view('user.user_center',$return_info);
     }
 
     //用户提交申请
     public function userApply(){
-        $user_info = $this->user_info;
-        return view('user_apply',compact('user_info'));
+        $return_info = $this->return_info;
+        $return_info['nav'] = 'apply';
+        $return_info['title'] = '提交申请';
+        return view('user.user_apply',$return_info);
     }
     //申请入库
     public function userApplyDo(Request $request){

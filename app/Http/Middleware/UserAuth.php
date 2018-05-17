@@ -19,7 +19,7 @@ class UserAuth
             if($request->ajax())
                 returnJson(302,'登录超时');
             else
-                header('Location:/');
+                header('Location:/login');
             exit;
         }
         else

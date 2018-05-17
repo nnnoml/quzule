@@ -40,4 +40,8 @@ class PageLists extends Model
         else
             return false;
     }
+
+    public static function getList(){
+        return self::select('page_name','id')->get();
+    }
 }

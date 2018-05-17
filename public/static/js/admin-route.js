@@ -82,3 +82,8 @@ R.route('/apply', function() {
 R.route('/apply/detail', function() {
     mainSrc('apply','detail');
 });
+//----------------------------------------------
+//用户列表
+R.route('/indexUser', function() {
+    mainSrc('indexUser');
+});

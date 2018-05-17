@@ -15,7 +15,7 @@ class ItemController extends Controller
 
     public function index(){
         if(authCheck($this->menu_id,__FUNCTION__)) {
-            $list = ItemList::getList();
+            $list = ItemList::getInfo();
             if ($list) {
                 foreach ($list as $key => $item) {
                     $list[$key]['is_show'] = $item['is_show'] == 1 ? '展示' : '不展示';

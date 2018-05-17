@@ -131,3 +131,6 @@
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+.blog_content img{
+  max-width:100%;}
