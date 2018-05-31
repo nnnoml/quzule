@@ -12,15 +12,20 @@ class IndexApply extends Model
         $user_id  = session()->get('user_id');
         $insert = [
             'user_id' => $user_id,
-            'comp_name' => $data['comp_name'],
-            'comp_reg_num' => $data['comp_reg_num'],
-            'comp_reg_time' => $data['comp_reg_time'],
             'license' => rtrim($data['license_input'],','),
-            'legal_person_name' => $data['legal_person_name'],
-            'legal_person_id' => $data['legal_person_id'],
-            'legal_person_card_front' => rtrim($data['legal_person_card_front_input'],','),
-            'legal_person_card_back' => rtrim($data['legal_person_card_back_input'],','),
-            'area_img' => rtrim($data['area_img_input'],','),
+
+            'wenhua_input' => rtrim($data['wenhua_input'],','),
+            'xiaofang_input' => rtrim($data['xiaofang_input'],','),
+            'kuandai_input' => rtrim($data['kuandai_input'],','),
+            'zufang_input' => rtrim($data['zufang_input'],','),
+            'mentou_input' => rtrim($data['mentou_input'],','),
+            'neibu_input' => rtrim($data['neibu_input'],','),
+            'xiaofangtongdao_input' => rtrim($data['xiaofangtongdao_input'],','),
+            'zhengxin_input' => rtrim($data['zhengxin_input'],','),
+            'monitor_account' => trim($data['monitor_account']),
+
+            'legal_person_card_front' => rtrim($data['legal_person_card_front'],','),
+            'legal_person_card_back' => rtrim($data['legal_person_card_back'],','),
             'check_user_id' => 0,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

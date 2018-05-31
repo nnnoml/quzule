@@ -25,21 +25,27 @@ else{
 
 function ajaxReturn(data){
     var real_data = data.data[0];
-    $("input[name='comp_name']").val(real_data.comp_name);
-    $("input[name='comp_reg_num']").val(real_data.comp_reg_num);
-    $("input[name='comp_reg_time']").val(real_data.comp_reg_time);
-    $("input[name='legal_person_name']").val(real_data.legal_person_name);
-    $("input[name='legal_person_id']").val(real_data.legal_person_id);
 
+    Object.keys(real_data).forEach(function(key){
+        if(key == 'monitor_account')
+            $("input[name='"+key+"']").val(real_data[key]);
+        else if(key == 'license' || key == 'wenhua_input' || key == 'xiaofang_input' || key == 'legal_person_card_front' || key == 'legal_person_card_back')
+            $("#"+key).html(format_a_img(real_data[key]));
 
-    $("#license").html(format_a_img(real_data.license));
-    $("#legal_person_card").html(format_a_img(real_data.legal_person_card_front)+format_a_img(real_data.legal_person_card_back));
+        else if(key == 'kuandai_input' || key == 'zufang_input' || key == 'mentou_input' || key == 'neibu_input' || key == 'xiaofangtongdao_input' || key == 'zhengxin_input'){
+            var m = real_data[key].split(",");
+            if(m.length<=1)
+                $("#"+key).html(format_a_img(real_data[key]));
+            else{
+                var foo = '';
+                m.forEach(function(item, index){
+                    foo += format_a_img(item);
+                });
+                $("#"+key).html(foo);
+            }
 
-    var area_img_list = '';
-    real_data.area_img.forEach(function(item, index){
-        area_img_list += format_a_img(item);    
+        }
     });
-    $("#area_img").html(area_img_list);
 
     if(real_data.check_status == 1){
         $('.btn-toggle > a').eq(0).trigger('click');

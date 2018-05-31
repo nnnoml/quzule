@@ -32,7 +32,12 @@ Route::group(['prefix' => 'indexapi'], function () {
     //登录
     Route::post('/login','Index\IndexUserController@loginDo');
     //注册
-    Route::post('/register','Index\IndexUserController@registerDo');
+    Route::post('/regist','Index\IndexUserController@registerDo');
+    //申请图上传
+    Route::post('/applyUpload','UploaderController@apply');
+    //短信接口
+    Route::any('/sms','Index\IndexUserController@sendSms');
+
     //需要auth的接口路由
     Route::group(['middleware' => 'UserAuth'], function () {
         //登出
@@ -40,8 +45,6 @@ Route::group(['prefix' => 'indexapi'], function () {
         //提交申请
         Route::post('/userApply','Index\IndexUserController@userApplyDo');
     });
-    //申请图上传
-    Route::post('/applyUpload','UploaderController@apply');
 });
 //前台需要auth的路由 不是接口
 Route::group(['middleware' => 'UserAuth'], function () {

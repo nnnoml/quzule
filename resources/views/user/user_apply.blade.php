@@ -30,7 +30,7 @@
 <!--            </div>-->
         </div>
         <div class="authCard">
-            <div class="pannelHead">认证中心</div>
+            <div class="pannelHead">网咖准入标准</div>
             <div class="pannelBody">
                 <form id='submit_data'>
                 <div class="stepContainer">
@@ -39,73 +39,139 @@
                             <table>
                                 <tbody>
                                 <tr>
-                                    <td class="textLeft height36 w180">企业名称：</td>
-                                    <td><input class="formControl input300" name="comp_name" type="text" placeholder="跟营业执照上的企业名称一致"></td>
-                                </tr>
-                                <tr>
-                                    <td class="textLeft height36 w180">工商执照注册号：</td>
-                                    <td><input class="formControl input300" name="comp_reg_num" text="text" placeholder="三证合一后18位的统一社会信用代码"></td>
-                                </tr>
-                                <tr>
-                                    <td class="textLeft height36 w180">注册时间：</td>
-                                    <td><input class="timeBox input300 datepicker timeIcon" data-date="" data-date-format="yyyy-mm-dd"
-                                               data-link-field="dtp_input2" data-link-format="yyyy-mm-dd" name="comp_reg_time" type="text"
-                                               readonly="" id="reg_time" placeholder="务必与营业执照一致"></td>
-                                </tr>
-                                <tr>
                                     <input type="hidden" name="license_input" value=""/>
-                                    <td class="textLeft height36 w180">营业执照：</td>
-                                    <td style="height:188px;"><img class="licenseImg" id="license_img" src="https://static1.aidingmao.com/boss/img/114fba30-1a6b-11e7-a1a3-17a6d0e2b19f.jpg">
+                                    <td class="textLeft height36 w180">营业执照<br />(复印件加盖公章)：</td>
+                                    <td style="height:188px;"><img class="licenseImg" id="license_input_img" src="{{asset('static/img')}}/licenseImg.jpg">
                                         <div class="licenseBox"><p>只支持中国大陆工商局或市场监督管理局颁发的工商营业执照，</p>
                                             <p>且必须在有效期内。若办理过三证合一的企业，请再次上传最新</p>
                                             <p>的营业执照。格式要求：原件照片，支持.jpg .jpeg .bmp </p>
                                             <p>.gif .png格式照片，大小不超过5M。</p>
-
-                                            <div id="license" class="webuploader_list" style="width:100px;">选择图片</div>
+                                            <div id="license_input" class="webuploader_list" style="width:100px;">选择图片</div>
                                         </div>
                                     </td>
                                 </tr>
+<!--文化许可证-->
                                 <tr>
-                                    <td class="textLeft height36 w180"><p>法人姓名：</p></td>
-                                    <td><input class="formControl input300" name="legal_person_name" type="text" placeholder="请输入正确的法人姓名"></td>
+                                    <input type="hidden" name="wenhua_input" value=""/>
+                                    <td class="textLeft height36 w180">文化许可证<br />(复印件加盖公章)：</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="wenhua_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="wenhua_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
                                 </tr>
+<!--消防合格证-->
                                 <tr>
-                                    <td class="textLeft height36 w180">法人身份证号：</td>
-                                    <td><input class="formControl input300" name="legal_person_id" type="text" placeholder="请输入正确的法人身份证号"></td>
+                                    <input type="hidden" name="xiaofang_input" value=""/>
+                                    <td class="textLeft height36 w180">消防合格证<br />(复印件加盖公章)：</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="xiaofang_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="xiaofang_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
                                 </tr>
+<!--宽带接入协议/证明-->
                                 <tr>
-                                    <input type="hidden" name="legal_person_card_front_input" value=""/>
-                                    <input type="hidden" name="legal_person_card_back_input" value=""/>
+                                    <input type="hidden" name="kuandai_input" value=""/>
+                                    <td class="textLeft height36 w180">宽带接入协议/证明<br />(复印件加盖公章)：</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="kuandai_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="kuandai_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+<!--租房协议-->
+                                <tr>
+                                    <input type="hidden" name="zufang_input" value=""/>
+                                    <td class="textLeft height36 w180">租房协议<br />(复印件加盖公章)：</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="zufang_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="zufang_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+<!--门头照片-->
+                                <tr>
+                                    <input type="hidden" name="mentou_input" value=""/>
+                                    <td class="textLeft height36 w180">门头照片<br />(LOGO露出)：</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="mentou_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="mentou_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+<!--网咖内部环境照片-->
+                                <tr>
+                                    <input type="hidden" name="neibu_input" value=""/>
+                                    <td class="textLeft height36 w180">网咖内部环境照片<br />(至少五张)：</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="neibu_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="neibu_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+<!--消防通道照片-->
+                                <tr>
+                                    <input type="hidden" name="xiaofangtongdao_input" value=""/>
+                                    <td class="textLeft height36 w180">消防通道照片</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="xiaofangtongdao_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="xiaofangtongdao_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+<!--法人身份证正反面照片-->
+                                <tr>
+                                    <input type="hidden" name="legal_person_card_front" value=""/>
+                                    <input type="hidden" name="legal_person_card_back" value=""/>
                                     <td class="textLeft height36 w180">法人身份证正反面照片：</td>
                                     <td>
                                         <div class="clear">
                                             <div class="frontSide">
                                                 <label id="legal_person_card_front" class="webuploader_list"  style="position: relative; z-index: 1;">
-                                                    <img id="legal_person_card_front_img" src="https://static1.aidingmao.com/boss/img/1180b540-1a6b-11e7-a1a3-17a6d0e2b19f.jpg">
+                                                    <img id="legal_person_card_front_img" src="{{asset('static/img')}}/card_font.jpg">
                                                     <p>正面</p>
                                                 </label>
                                             </div>
                                             <div class="endSide">
                                                 <label id="legal_person_card_back" class="webuploader_list" style="position: relative; z-index: 1;">
-                                                    <img id="legal_person_card_back_img" src="https://static1.aidingmao.com/boss/img/11832640-1a6b-11e7-a1a3-17a6d0e2b19f.png">
+                                                    <img id="legal_person_card_back_img" src="{{asset('static/img')}}/card_back.jpg">
                                                     <p>反面</p>
                                                 </label>
                                             </div>
                                         </div>
                                         <p class="textAll mt10 mb10">格式要求：照片、扫描件或者加盖公章的复印件，支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p></td>
                                 </tr>
+<!--法人个人征信-->
                                 <tr>
-                                    <input type="hidden" name="area_img_input" value=""/>
-                                    <td class="textLeft height36 w180">经营场地租赁合同：</td>
+                                    <input type="hidden" name="zhengxin_input" value=""/>
+                                    <td class="textLeft height36 w180">法人个人征信</td>
                                     <td>
-                                        <div class="picList clear" id="uploader">
+                                        <div class="picList clear uploader" id="zhengxin_input_uploader">
                                             <ul class="filelist"> </ul>
                                         </div>
-                                        <p class="textAll mb10" style="margin-top: 4px;">
-                                            自有的房产提供房产证或者购房合同，租赁的提供租赁合同。支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
-                                        <label class="webuploader_list" id="area_img" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="zhengxin_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
                                     </td>
+                                </tr>
 
+                                <tr>
+                                    <td class="textLeft height36 w180">监控账号：</td>
+                                    <td><input class="formControl input300" name="monitor_account" type="text" placeholder="设备价值大于15万需提供监控账号"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -130,14 +196,16 @@
     <script>
         window.onsubmit=function(){
             var msg = '';
-            if($("input[name='comp_name']").val() == '') msg = '企业名称必填';
-            else if($("input[name='comp_reg_num']").val() == '') msg = '工商执照注册号必填';
-            else if($("input[name='comp_reg_time']").val() == '') msg = '注册时间必填';
-            else if($("input[name='license_input']").val() == '') msg = '请上传营业执照';
-            else if($("input[name='legal_person_name']").val() == '') msg = '法人姓名必填';
-            else if($("input[name='legal_person_id']").val() == '') msg = '法人身份证必填';
+            if($("input[name='license_input']").val() == '') msg = '请上传营业执照';
+            else if($("input[name='wenhua_input']").val() == '') msg = '请上传文化许可证';
+            else if($("input[name='xiaofang_input']").val() == '') msg = '请上传消防合格证';
+            else if($("input[name='kuandai_input']").val() == '') msg = '请上传宽带接入协议/证明';
+            else if($("input[name='zufang_input']").val() == '') msg = '请上传租房协议';
+            else if($("input[name='mentou_input']").val() == '') msg = '请上传门头照片';
+            else if($("input[name='neibu_input']").val() == '') msg = '请上传网咖内部环境照片';
+            else if($("input[name='xiaofangtongdao_input']").val() == '') msg = '请上传消防通道照片';
             else if($("input[name='legal_person_card_front_input']").val() == '' || $("input[name='legal_person_card_back_input']").val() == '') msg = '请上传法人身份证正反面照片';
-            else if($("input[name='area_img_input']").val() == '') msg = '请上传经营场地租赁合同';
+            else if($("input[name='zhengxin_input']").val() == '') msg = '请上传法人个人征信';
 
             if(msg != ''){
                 alert(msg);

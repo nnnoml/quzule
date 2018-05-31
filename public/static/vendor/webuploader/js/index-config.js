@@ -34,7 +34,8 @@ $(function(){
         var uploader = WebUploader.create({
             // 选完文件后，是否自动上传。
             auto: true,
-
+            //可重复上传
+            duplicate :true,
             // swf文件路径
             swf: '/static/vendor/webuploader/Uploader.swf',
 
@@ -52,26 +53,22 @@ $(function(){
                 mimeTypes: 'image/jpg,image/jpeg,image/png',
             },
             method:'POST',
-            fileNumLimit: 10,
+            fileNumLimit: 100,
             fileSizeLimit: 50 * 1024 * 1024,    // 50 M
             fileSingleSizeLimit: 5 * 1024 * 1024    // 5 M
         });
-        uploader.addButton({
-            id: '#license',
-            innerHTML: ''
-        });
-        uploader.addButton({
-            id: '#legal_person_card_front',
-            innerHTML: ''
-        });
-        uploader.addButton({
-            id: '#legal_person_card_back',
-            innerHTML: ''
-        });
-        uploader.addButton({
-            id: '#area_img',
-            innerHTML: ''
-        });
+        uploader.addButton({id: '#license_input',innerHTML: ''});
+        uploader.addButton({id: '#wenhua_input',innerHTML: ''});
+        uploader.addButton({id: '#xiaofang_input',innerHTML: ''});
+        uploader.addButton({id: '#kuandai_input',innerHTML: ''});
+        uploader.addButton({id: '#zufang_input',innerHTML: ''});
+        uploader.addButton({id: '#mentou_input',innerHTML: ''});
+        uploader.addButton({id: '#neibu_input',innerHTML: ''});
+        uploader.addButton({id: '#xiaofangtongdao_input',innerHTML: ''});
+        uploader.addButton({id: '#zhengxin_input',innerHTML: ''});
+
+        uploader.addButton({id: '#legal_person_card_front',innerHTML: ''});
+        uploader.addButton({id: '#legal_person_card_back',innerHTML: ''});
 
     // 当有文件添加进来时执行，负责view的创建
     function addFile( file ) {
@@ -112,15 +109,18 @@ $(function(){
             $li.remove();
             return;
         });
-
-        $li.appendTo($("#uploader > ul"));
+        if(now_pick == 'wenhua_input' || now_pick == 'xiaofang_input')
+            $("#"+now_pick+"_uploader > ul").html($li);
+        else
+            $li.appendTo($("#"+now_pick+"_uploader > ul"));
     }
 
         // 当有文件添加进来的时候
-        uploader.on( 'fileQueued', function( file ) {  // webuploader事件.当选择文件后，文件被加载到文件队列中，触发该事件。等效于 uploader.onFileueued = function(file){...} ，类似js的事件定义。
+        uploader.on( 'fileQueued', function( file ) {
+            // webuploader事件.当选择文件后，文件被加载到文件队列中，触发该事件。等效于 uploader.onFileueued = function(file){...} ，类似js的事件定义。
             // 创建缩略图
             //单图直接改
-            if(now_pick != 'area_img'){
+            if(now_pick == 'license_input' || now_pick == 'legal_person_card_front' || now_pick == 'legal_person_card_back'){
                 uploader.makeThumb( file, function( error, src ) {   //webuploader方法
                     $("#"+now_pick+'_img').attr('src',src)
                 }, thumbnailWidth, thumbnailHeight );
@@ -134,10 +134,12 @@ $(function(){
         // 文件上传成功 回调
         uploader.on( 'uploadSuccess', function( file,response ) {
             if(response.state != 'SUCCESS') return;
-
-            var input_handle = $("input[name='"+now_pick+"_input']");
-
-            var img_input = input_handle.val();
+            var input_handle = $("input[name='"+now_pick+"']");
+            //营业执照，法人照片，文化许可证，消防许可证 唯一
+            if(now_pick == 'license_input' || now_pick == 'wenhua_input' || now_pick == 'xiaofang_input' || now_pick == 'legal_person_card_front' || now_pick == 'legal_person_card_back')
+                var img_input = '';
+            else
+                var img_input = input_handle.val();
             if(typeof(img_input) == 'undefined')
                 img_input = response.url+',';
             else

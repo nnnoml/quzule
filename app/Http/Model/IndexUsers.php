@@ -21,4 +21,12 @@ class IndexUsers extends Model
         }
         else return 'old_pwd_error';
     }
+
+    public static function insertDo($data){
+        return self::insert([
+            'user_name'=>$data['tel'],
+            'password'=>password_hash($data['password'],PASSWORD_DEFAULT),
+            'created_at'=>date('Y-m-d H:i:s'),
+        ]);
+    }
 }

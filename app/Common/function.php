@@ -105,3 +105,20 @@ function BinarySet($auth){
         }
     return $result;
 }
+
+function isTel($tel)
+{
+    $phonePattern = "/^1\d{10}$/";
+    if(preg_match( $phonePattern, $tel)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function saveLog($url,$info){
+    // file_put_contents("../runtime/PhoneSms_".date("Ymd").".log", date("Y-m-d H:i:s")."ERROR:  ".$error.PHP_EOL, FILE_APPEND);
+    // file_put_contents("../runtime/PhoneSms_".date("Ymd").".log", var_export($paramArray,true).PHP_EOL.PHP_EOL.PHP_EOL, FILE_APPEND);
+    // var_export 数组转str
+    file_put_contents($url,$info.PHP_EOL, FILE_APPEND);
+}
