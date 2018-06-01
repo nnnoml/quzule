@@ -29,6 +29,9 @@ function ajaxReturn(data){
     Object.keys(real_data).forEach(function(key){
         if(key == 'monitor_account')
             $("input[name='"+key+"']").val(real_data[key]);
+        else if(key == 'mark' ){
+            $("textarea[name='"+key+"']").val(real_data[key]);
+        }
         else if(key == 'license' || key == 'wenhua_input' || key == 'xiaofang_input' || key == 'legal_person_card_front' || key == 'legal_person_card_back')
             $("#"+key).html(format_a_img(real_data[key]));
 

@@ -167,6 +167,7 @@ class IndexUserController extends IndexCommonController
             'legal_person_card_front' => 'required',
             'legal_person_card_back' => 'required',
             'monitor_account' => 'required', //监控帐号
+            'mark' => 'required', //监控帐号
         ];
         $validator = Validator::make($request->all(), $rules,$messages);
         if ($validator->fails()) {

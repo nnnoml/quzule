@@ -170,9 +170,16 @@
                                 </tr>
 
                                 <tr>
+                                    <td class="textLeft height36 w180">订购机型备注：</td>
+                                    <td><textarea class="form-control" rows="3" name="mark" placeholder="请填写需要订购的机型和其他信息"></textarea></td>
+                                </tr>
+
+                                <tr>
                                     <td class="textLeft height36 w180">监控账号：</td>
                                     <td><input class="formControl input300" name="monitor_account" type="text" placeholder="设备价值大于15万需提供监控账号"></td>
                                 </tr>
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -206,6 +213,7 @@
             else if($("input[name='xiaofangtongdao_input']").val() == '') msg = '请上传消防通道照片';
             else if($("input[name='legal_person_card_front_input']").val() == '' || $("input[name='legal_person_card_back_input']").val() == '') msg = '请上传法人身份证正反面照片';
             else if($("input[name='zhengxin_input']").val() == '') msg = '请上传法人个人征信';
+            else if($("textarea[name='mark']").val() == '') msg = '请填写备注';
 
             if(msg != ''){
                 alert(msg);

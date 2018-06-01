@@ -23,6 +23,7 @@ class IndexApply extends Model
             'xiaofangtongdao_input' => rtrim($data['xiaofangtongdao_input'],','),
             'zhengxin_input' => rtrim($data['zhengxin_input'],','),
             'monitor_account' => trim($data['monitor_account']),
+            'mark' => addslashes($data['mark']),
 
             'legal_person_card_front' => rtrim($data['legal_person_card_front'],','),
             'legal_person_card_back' => rtrim($data['legal_person_card_back'],','),
