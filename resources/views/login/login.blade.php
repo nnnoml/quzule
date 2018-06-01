@@ -25,7 +25,7 @@
                 <a href="/register">快速注册</a>
             </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
     </form>
 
 </div> <!-- /container -->

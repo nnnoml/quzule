@@ -57,21 +57,21 @@ $(function(){
             fileSizeLimit: 50 * 1024 * 1024,    // 50 M
             fileSingleSizeLimit: 5 * 1024 * 1024    // 5 M
         });
-        uploader.addButton({id: '#license_input',innerHTML: ''});
-        uploader.addButton({id: '#wenhua_input',innerHTML: ''});
-        uploader.addButton({id: '#xiaofang_input',innerHTML: ''});
-        uploader.addButton({id: '#kuandai_input',innerHTML: ''});
-        uploader.addButton({id: '#zufang_input',innerHTML: ''});
-        uploader.addButton({id: '#mentou_input',innerHTML: ''});
-        uploader.addButton({id: '#neibu_input',innerHTML: ''});
-        uploader.addButton({id: '#xiaofangtongdao_input',innerHTML: ''});
-        uploader.addButton({id: '#zhengxin_input',innerHTML: ''});
+        uploader.addButton({id: '#license_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#wenhua_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#xiaofang_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#kuandai_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#zufang_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#mentou_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#neibu_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#xiaofangtongdao_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#zhengxin_input',innerHTML: '',multiple: false});
 
-        uploader.addButton({id: '#legal_person_card_front',innerHTML: ''});
-        uploader.addButton({id: '#legal_person_card_back',innerHTML: ''});
+        uploader.addButton({id: '#legal_person_card_front',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#legal_person_card_back',innerHTML: '',multiple: false});
 
     // 当有文件添加进来时执行，负责view的创建
-    function addFile( file ) {
+    function addFile( file,real_url ) {
         var $li = $( '<li id="' + file.id + '">' +
                 '<p class="title">' + file.name + '</p>' +
                 '<p class="imgWrap"></p>'+
@@ -79,7 +79,7 @@ $(function(){
                 '</li>' );
 
             $btns = $('<div class="file-panel">' +
-                '<span class="cancel">删除</span></div>').appendTo( $li );
+                '<span class="cancel" real_url = "'+real_url+'">删除</span></div>').appendTo( $li );
             $wrap = $li.find( 'p.imgWrap' ),
 
         uploader.makeThumb( file, function( error, src ) {
@@ -105,6 +105,8 @@ $(function(){
         });
 
         $btns.on( 'click', 'span', function() {
+            var input_val = $("input[name='"+now_pick+"']").val();
+            $("input[name='"+now_pick+"']").val(input_val.replace($(this).attr('real_url')+',',''));
             uploader.removeFile( file,true);
             $li.remove();
             return;
@@ -125,10 +127,10 @@ $(function(){
                     $("#"+now_pick+'_img').attr('src',src)
                 }, thumbnailWidth, thumbnailHeight );
             }
-            //多图要编辑
-            else{
-                addFile( file );
-            }
+            // //多图要编辑
+            // else{
+            //     addFile( file );
+            // }
         });
 
         // 文件上传成功 回调
@@ -146,6 +148,7 @@ $(function(){
                 img_input += response.url+',';
 
             input_handle.val(img_input);
+            addFile( file,response.url );
         });
 
         // 文件上传失败，显示上传出错。
