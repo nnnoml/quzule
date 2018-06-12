@@ -90,7 +90,7 @@
 
                         <h3 class="text-special-default">{{$vo['item_name']}}</h3>
                         <p><a href="/product/{{$vo['item_class']}}/{{$vo['id']}}">
-                            <img style="width:240px;max-height:120px;" class="img-responsive img-rounded"
+                            <img style="width:240px;height:240px;" class="img-responsive img-rounded"
                             @if($vo['item_avatar'])
                                 src="{{$vo['item_avatar']}}"
                             @else

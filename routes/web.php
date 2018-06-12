@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//前台 不需要auth的路由
+Route::get('/abc','Index\IndexController@aaa');
+
 Route::get('/csrf',function(){
     echo csrf_token();
 });

@@ -18,7 +18,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                     <div class="speical speical-default speical-radius">
                         <div class="speical-content">
-                            <h3 class="text-special-default">{{$vo['item_name']}}</h3>
+                            <h3 class="text-special-default" style="min-height:78px;">{{$vo['item_name']}}</h3>
                             <p><img style="width:100px;height:100px;" class="img-responsive img-rounded"
                                     @if($vo['item_avatar'])
                                         src="{{$vo['item_avatar']}}"

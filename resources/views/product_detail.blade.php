@@ -29,7 +29,7 @@
 
         <dl class="dl-horizontal col-md-6">
             <h3>{{$product['item_name']}}<small>参数</small></h3>
-            <dt>价格</dt><dd>{{$product['item_price']}}</dd>
+<!--            <dt>价格</dt><dd>{{$product['item_price']}}</dd>-->
             <dt>租价/月</dt><dd>{{$product['item_rent_price']}}</dd>
         </dl>
         <div style="clear:both"></div>
@@ -45,15 +45,7 @@
             <div class="fade tab-pane " id="p2">{!!$product['item_parame']!!}</div>
             <div class="fade tab-pane " id="p3">
                 <div class="readme J_tabCon" style="text-align:center">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/3a7a7850-ec6b-11e7-b067-b3801628a039.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/4c12dd50-ec6b-11e7-b067-b3801628a039.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/51626c30-ec6b-11e7-b067-b3801628a039.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/712a41a0-ec6b-11e7-b067-b3801628a039.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/79ccf320-ec6b-11e7-b067-b3801628a039.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/5cc4c000-275d-11e8-bb1b-c9a946405ae9.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/8ac17700-ec6b-11e7-b067-b3801628a039.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/93f82b20-ec6b-11e7-b067-b3801628a039.jpg">
-                    <img class="img-750" src="https://static1.aidingmao.com/boss/img/9e9e4dc0-ec6b-11e7-b067-b3801628a039.jpg">
+                    <img src="{{asset('static/img/')}}/liucheng.jpg"/>
                 </div>
             </div>
         </div>

@@ -148,6 +148,8 @@ $(".upload_list").click(function(){
             formData: {
                 uid: 123
             },
+            //可重复上传
+            duplicate :true,
             dnd: '#dndArea',
             paste: '#uploader',
             swf: '/static/vendor/webuploader/Uploader.swf',

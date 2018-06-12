@@ -40,62 +40,62 @@
                                 <tbody>
                                 <tr>
                                     <input type="hidden" name="license_input" value=""/>
-                                    <td class="textLeft height36 w180">营业执照<br />(复印件加盖公章)：</td>
+                                    <td class="textLeft height36 w180">营业执照扫描件<br />(复印件加盖公章)：</td>
                                     <td style="height:188px;"><img class="licenseImg" id="license_input_img" src="{{asset('static/img')}}/licenseImg.jpg">
                                         <div class="licenseBox"><p>只支持中国大陆工商局或市场监督管理局颁发的工商营业执照，</p>
                                             <p>且必须在有效期内。若办理过三证合一的企业，请再次上传最新</p>
                                             <p>的营业执照。格式要求：原件照片，支持.jpg .jpeg .bmp </p>
                                             <p>.gif .png格式照片，大小不超过5M。</p>
-                                            <div id="license_input" class="webuploader_list" style="width:100px;">选择图片</div>
+                                            <div id="license_input" class="webuploader_list" style="width:100px;">选择扫描件</div>
                                         </div>
                                     </td>
                                 </tr>
 <!--文化许可证-->
                                 <tr>
                                     <input type="hidden" name="wenhua_input" value=""/>
-                                    <td class="textLeft height36 w180">文化许可证<br />(复印件加盖公章)：</td>
+                                    <td class="textLeft height36 w180">文化许可证扫描件<br />(复印件加盖公章)：</td>
                                     <td>
                                         <div class="picList clear uploader" id="wenhua_input_uploader">
                                             <ul class="filelist"> </ul>
                                         </div>
                                         <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
-                                        <label class="webuploader_list" id="wenhua_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                        <label class="webuploader_list" id="wenhua_input" style="position: relative; z-index: 1;width:100px;float:left">选择扫描件</label>
                                     </td>
                                 </tr>
 <!--消防合格证-->
                                 <tr>
                                     <input type="hidden" name="xiaofang_input" value=""/>
-                                    <td class="textLeft height36 w180">消防合格证<br />(复印件加盖公章)：</td>
+                                    <td class="textLeft height36 w180">消防合格证扫描件<br />(复印件加盖公章)：</td>
                                     <td>
                                         <div class="picList clear uploader" id="xiaofang_input_uploader">
                                             <ul class="filelist"> </ul>
                                         </div>
                                         <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
-                                        <label class="webuploader_list" id="xiaofang_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                        <label class="webuploader_list" id="xiaofang_input" style="position: relative; z-index: 1;width:100px;float:left">选择扫描件</label>
                                     </td>
                                 </tr>
 <!--宽带接入协议/证明-->
                                 <tr>
                                     <input type="hidden" name="kuandai_input" value=""/>
-                                    <td class="textLeft height36 w180">宽带接入协议/证明<br />(复印件加盖公章)：</td>
+                                    <td class="textLeft height36 w180">宽带接入协议/证明 扫描件<br />(复印件加盖公章)：</td>
                                     <td>
                                         <div class="picList clear uploader" id="kuandai_input_uploader">
                                             <ul class="filelist"> </ul>
                                         </div>
                                         <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
-                                        <label class="webuploader_list" id="kuandai_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                        <label class="webuploader_list" id="kuandai_input" style="position: relative; z-index: 1;width:100px;float:left">选择扫描件</label>
                                     </td>
                                 </tr>
 <!--租房协议-->
                                 <tr>
                                     <input type="hidden" name="zufang_input" value=""/>
-                                    <td class="textLeft height36 w180">租房协议<br />(复印件加盖公章)：</td>
+                                    <td class="textLeft height36 w180">租房协议扫描件<br />(复印件加盖公章)：</td>
                                     <td>
                                         <div class="picList clear uploader" id="zufang_input_uploader">
                                             <ul class="filelist"> </ul>
                                         </div>
                                         <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
-                                        <label class="webuploader_list" id="zufang_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                        <label class="webuploader_list" id="zufang_input" style="position: relative; z-index: 1;width:100px;float:left">选择扫描件</label>
                                     </td>
                                 </tr>
 <!--门头照片-->
@@ -159,19 +159,19 @@
 <!--法人个人征信-->
                                 <tr>
                                     <input type="hidden" name="zhengxin_input" value=""/>
-                                    <td class="textLeft height36 w180">法人个人征信</td>
+                                    <td class="textLeft height36 w180">法人个人征信扫描件</td>
                                     <td>
                                         <div class="picList clear uploader" id="zhengxin_input_uploader">
                                             <ul class="filelist"> </ul>
                                         </div>
                                         <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
-                                        <label class="webuploader_list" id="zhengxin_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                        <label class="webuploader_list" id="zhengxin_input" style="position: relative; z-index: 1;width:100px;float:left">选择扫描件</label>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td class="textLeft height36 w180">订购机型备注：</td>
-                                    <td><textarea class="form-control" rows="3" name="mark" placeholder="请填写需要订购的机型和其他信息"></textarea></td>
+                                    <td class="textLeft height36 w180">订购机型/数量：</td>
+                                    <td><textarea class="form-control" rows="3" name="mark" placeholder="请填写需要订购的机型，数量和其他信息"></textarea></td>
                                 </tr>
 
                                 <tr>
