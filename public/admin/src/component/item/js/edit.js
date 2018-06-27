@@ -52,7 +52,7 @@ function ajaxReturn(data){
         var img_list = '';
         var input_img_list = '';
         data.imgs.forEach(function(item,index){
-            img_list += '<img src="'+item+'" />';
+            img_list += '<div style="float:left; max-width:200px;"><img src="'+item+'" /> <a style="display: block" href="javascript:;" onclick="deleteImg(this,\''+item+'\')">删除</a></div>';
             input_img_list+=item+',';
         })
         $("#warpper_back").show();
@@ -90,6 +90,14 @@ function updateReturn(){
     window.location.href=admin_url+'/#/'+'item'
 }
 
+//删除图片
+function deleteImg(thi,item){
+    $(thi).parent().remove();
+    var input_val = $("#item_img").val();
+    $("#item_img").val(input_val.replace(item+',',''));
+    //ajax删除图片
+    ajaxCommon('itemDelImg','id='+item_id+'&url='+item,'post','');
+}
 
 
 

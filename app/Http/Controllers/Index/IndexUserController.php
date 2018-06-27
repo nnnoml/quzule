@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Model\IndexUsers;
 use App\Http\Model\IndexApply;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 use Qcloud\Sms\SmsSingleSender;
@@ -133,31 +134,51 @@ class IndexUserController extends IndexCommonController
         }
     }
 
-    //用户中心
-    public function userCenter(){
-        $return_info = $this->return_info;
-        $return_info['title'] = '个人中心';
-        return view('user.user_center',$return_info);
-    }
-
     //用户提交申请
     public function userApply(){
         $return_info = $this->return_info;
         $return_info['nav'] = 'apply';
         $return_info['title'] = '提交申请';
-        return view('user.user_apply',$return_info);
+
+        $apply_status = $this->userApplyCheck();
+        if($apply_status == 1){
+            echo"<script>alert('审核中，无法重复提交');window.history.go(-1)</script>";
+        }
+        else if($apply_status == 2){
+            echo"<script>alert('您已经审核通过');window.history.go(-1)</script>";
+        }
+        else if($apply_status == 3){
+            $return_info['title'] .= ' 补充资料';
+            $user_id = session()->get('user_id');
+            $return_info['has_file'] = IndexApply::where('user_id',$user_id)->first()->toArray();
+            $has_empty = false;
+            foreach($return_info['has_file'] as $key=>$vo){
+                if(empty($vo)){
+                    $has_empty = true;
+                    break;
+                }
+            }
+            if($has_empty)
+                return view('user.user_apply_add',$return_info);
+            else
+                echo"<script>alert('您已经审核通过');window.history.go(-1)</script>";
+        }
+        else
+            return view('user.user_apply',$return_info);
+
     }
+
     //申请入库
     public function userApplyDo(Request $request){
+        $apply_check = $this->userApplyCheck();
+        //只有默认和待补充状态才能够上传
+        if($apply_check!=0 && $apply_check !=3) return;
         //参数验证
-        $messages = [
-            'required' => ':attribute must be input.',
-        ];
-
         $rules = [
             'license_input' => 'required',
-            'wenhua_input' => 'required',
-            'xiaofang_input' => 'required',
+//            'wenhua_input' => 'required',
+//            'xiaofang_input' => 'required',
+//            'wangjian_input' => 'required',
             'kuandai_input' => 'required',
             'zufang_input' => 'required',
             'mentou_input' => 'required',
@@ -166,21 +187,55 @@ class IndexUserController extends IndexCommonController
             'zhengxin_input' => 'required',
             'legal_person_card_front' => 'required',
             'legal_person_card_back' => 'required',
-            'monitor_account' => 'required', //监控帐号
-            'mark' => 'required', //监控帐号
+        ];
+
+        $messages = [
+            'license_input.required' => '请上传营业执照',
+//            'wenhua_input.required' => '请上传文化许可证',
+//            'xiaofang_input.required' => '请上传消防合格证',
+//            'wangjian_input.required' => '请上传网络监察证',
+            'kuandai_input.required' => '请上传宽带接入协议/证明',
+            'zufang_input.required' => '请上传租房协议',
+            'mentou_input.required' => '请上传门头照片',
+            'neibu_input.required' => '请上传网咖内部环境照片',
+            'xiaofangtongdao_input.required' => '请上传消防通道照片',
+            'zhengxin_input.required' => '请上传法人个人征信',
+            'legal_person_card_front.required' => '请上传法人身份证正面照片',
+            'legal_person_card_back.required' => '请上传法人身份证反面照片',
         ];
         $validator = Validator::make($request->all(), $rules,$messages);
-        if ($validator->fails()) {
-            returnJson(0,json_encode($validator->messages()));
+        //字段验证，如果是待补充 就不验证
+        if ($validator->fails() && $apply_check!=3) {
+            $msg = $validator->errors()->messages();
+            $ret_msg = '';
+            foreach($msg as $key=>$vo){
+                $ret_msg .= $vo[0].', ';
+            }
+            returnJson(0,rtrim($ret_msg,', '));
         }
         else{
+            $user_id = session()->get('user_id');
             $data = $request->all();
             //取用户数据
-            $res = IndexApply::insertApply($data);
-            if($res)
+            DB::beginTransaction();
+            if($apply_check==3){
+                $data['updated_at']=date('Y-m-d H:i:s');
+                $res1 = IndexApply::where('user_id',$user_id)->update($data);
+                $res2 = 1;
+            }
+            else{
+                $res1 = IndexApply::insertApply($data);
+                $res2 = IndexUsers::where('id',$user_id)->where('apply_status',0)->update(['apply_status'=>1]);
+            }
+
+            if($res1 && $res2){
+                DB::commit();
                 returnJson(1,'成功');
-            else
+            }
+            else{
+                DB::rollBack();
                 returnJson(0,'提交失败');
+            }
         }
     }
 

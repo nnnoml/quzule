@@ -28,14 +28,16 @@
                             </ul>
                         </li>
                         <li @if(isset($nav) && $nav=="apply") class="active" @endif><a href="/userApply">免押金申请</a></li>
-                        <li @if(isset($nav) && $nav=="page") class="active" @endif><a href="/page/1">租赁规则</a></li>
+                        <li @if(isset($nav) && $nav=="page1") class="active" @endif><a href="/page/1">租赁规则</a></li>
+                        <li @if(isset($nav) && $nav=="page2") class="active" @endif><a href="/page/2">电子合同签署流程</a></li>
                     </ul>
                     <ul class="nav navbar-nav" style="float:right;">
                         @if (isset($user_info['user_id']))
                         <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎你 {{$user_info['user_name']}} <span class="caret"></span></a>
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎你 {{$user_info['user_name']}} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-<!--                                <li><a href="/userCenter" >个人中心</a></li>-->
+                                <li><a href="/cart" >购物车</a></li>
+                                <li><a href="/userCenter" >个人中心</a></li>
                                 <li><a href="#" id="loginOut">退出登陆</a></li>
                             </ul>
                         </li>

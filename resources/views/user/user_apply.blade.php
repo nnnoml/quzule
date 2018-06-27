@@ -74,6 +74,18 @@
                                         <label class="webuploader_list" id="xiaofang_input" style="position: relative; z-index: 1;width:100px;float:left">选择扫描件</label>
                                     </td>
                                 </tr>
+<!--网络监察证-->
+                                <tr>
+                                    <input type="hidden" name="wangjian_input" value=""/>
+                                    <td class="textLeft height36 w180">网络监察证描件<br />(复印件加盖公章)：</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="wangjian_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="wangjian_input" style="position: relative; z-index: 1;width:100px;float:left">选择扫描件</label>
+                                    </td>
+                                </tr>
 <!--宽带接入协议/证明-->
                                 <tr>
                                     <input type="hidden" name="kuandai_input" value=""/>
@@ -132,6 +144,45 @@
                                         </div>
                                         <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
                                         <label class="webuploader_list" id="xiaofangtongdao_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+
+<!--其他资料1-->
+                                <tr>
+                                    <input type="hidden" name="other1_input" value=""/>
+                                    <td class="textLeft height36 w180">其他资料1<br />(非必填)</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="other1_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="other1_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+
+<!--其他资料2-->
+                                <tr>
+                                    <input type="hidden" name="other2_input" value=""/>
+                                    <td class="textLeft height36 w180">其他资料2<br />(非必填)</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="other2_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="other2_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
+                                    </td>
+                                </tr>
+
+<!--其他资料3-->
+                                <tr>
+                                    <input type="hidden" name="other3_input" value=""/>
+                                    <td class="textLeft height36 w180">其他资料3<br />(非必填)</td>
+                                    <td>
+                                        <div class="picList clear uploader" id="other3_input_uploader">
+                                            <ul class="filelist"> </ul>
+                                        </div>
+                                        <p class="textAll mb10" style="margin-top: 4px;">支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过5M。</p>
+                                        <label class="webuploader_list" id="other3_input" style="position: relative; z-index: 1;width:100px;float:left">选择图片</label>
                                     </td>
                                 </tr>
 <!--法人身份证正反面照片-->
@@ -204,8 +255,9 @@
         window.onsubmit=function(){
             var msg = '';
             if($("input[name='license_input']").val() == '') msg = '请上传营业执照';
-            else if($("input[name='wenhua_input']").val() == '') msg = '请上传文化许可证';
-            else if($("input[name='xiaofang_input']").val() == '') msg = '请上传消防合格证';
+//            else if($("input[name='wenhua_input']").val() == '') msg = '请上传文化许可证';
+//            else if($("input[name='xiaofang_input']").val() == '') msg = '请上传消防合格证';
+//            else if($("input[name='wangjian_input']").val() == '') msg = '请上传网络监察证';
             else if($("input[name='kuandai_input']").val() == '') msg = '请上传宽带接入协议/证明';
             else if($("input[name='zufang_input']").val() == '') msg = '请上传租房协议';
             else if($("input[name='mentou_input']").val() == '') msg = '请上传门头照片';
@@ -213,7 +265,7 @@
             else if($("input[name='xiaofangtongdao_input']").val() == '') msg = '请上传消防通道照片';
             else if($("input[name='legal_person_card_front_input']").val() == '' || $("input[name='legal_person_card_back_input']").val() == '') msg = '请上传法人身份证正反面照片';
             else if($("input[name='zhengxin_input']").val() == '') msg = '请上传法人个人征信';
-            else if($("textarea[name='mark']").val() == '') msg = '请填写备注';
+//            else if($("textarea[name='mark']").val() == '') msg = '请填写备注';
 
             if(msg != ''){
                 alert(msg);

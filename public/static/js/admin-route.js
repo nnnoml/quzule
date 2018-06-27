@@ -87,3 +87,13 @@ R.route('/apply/detail', function() {
 R.route('/indexUser', function() {
     mainSrc('indexUser');
 });
+//----------------------------------------------
+//订单管理
+//单页列表
+R.route('/order', function() {
+    mainSrc('order','index');
+});
+//修改单页
+R.route('/order/edit', function() {
+    mainSrc('order','edit');
+});

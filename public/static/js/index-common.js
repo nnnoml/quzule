@@ -19,17 +19,18 @@ function ajaxCommon(url,param,reqType,callback){
             type: reqType,
             dataType: "json",
             success:function(data){
-                console.log(data);
                 if(data.code === 1){
                     if(typeof(callback) != 'undefined'){
-                        callback(data);
+                        eval(callback)(data);
                     }
                 }
                 else if(data.code === 302){
                     window.location.href='/'+'login';
                 }
                 else {
-                    alert(data.msg)
+                    alert(data.msg);
+                    if(typeof(data.url) !='undefined')
+                        window.location.href='/'+data.url;
                 }
             },
             error:function(){

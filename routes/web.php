@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,16 +9,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //前台 不需要auth的路由
-Route::get('/abc','Index\IndexController@aaa');
-
 Route::get('/csrf',function(){
     echo csrf_token();
 });
 //------------------------------------前台
 //前台 不需要auth的路由
-Route::get('/','Index\IndexController@index');
+Route::get('/','Index\IndexController@index')->name('index');
 //单页
 Route::get('/page/{id?}','Index\IndexController@page');
 //产品
@@ -30,6 +26,8 @@ Route::get('/product/{list}/{id}','Index\IndexController@productDetail');
 Route::get('/login','Index\IndexUserController@login');
 //前台注册
 Route::get('/register','Index\IndexUserController@register');
+//用户合同单页
+Route::get('/userOrderDoc','Index\IndexOrderController@userOrderDoc');
 
 //前台接口路由
 Route::group(['prefix' => 'indexapi'], function () {
@@ -46,18 +44,33 @@ Route::group(['prefix' => 'indexapi'], function () {
     Route::group(['middleware' => 'UserAuth'], function () {
         //登出
         Route::post('/loginOut','Index\IndexUserController@loginOut');
+        //加入购物车
+        Route::post('/addCart','Index\IndexCartController@addCart');
+        //购物车删除
+        Route::get('/deleteCart','Index\IndexCartController@deleteCart');
+        //收货地址route
+        Route::resource('/address','Index\IndexUserCenterController');
+        //提交订单
+        Route::get('/addOrder','Index\IndexOrderController@addOrder');
+        //取消订单
+        Route::post('/cancleOrder','Index\IndexOrderController@cancleOrder');
         //提交申请
         Route::post('/userApply','Index\IndexUserController@userApplyDo');
     });
 });
 //前台需要auth的路由 不是接口
 Route::group(['middleware' => 'UserAuth'], function () {
-    Route::get('/userCenter','Index\IndexUserController@userCenter');
+    //用户购物车
+    Route::get('/cart','Index\IndexCartController@cart');
+    //用户中心
+    Route::get('/userCenter','Index\IndexUserCenterController@order');
+    //用户中心地址
+    Route::get('/userCenterAddress','Index\IndexUserCenterController@address');
+    //用户押金申请
     Route::get('/userApply','Index\IndexUserController@userApply');
 });
 
 //--------------------------------后台
-
 //后台登录
 Route::post('/adminapi/login','Admin\AdminUserController@login');
 //后台管理
@@ -74,6 +87,8 @@ Route::group(['middleware' => 'AdminAuth','prefix' => 'adminapi'], function () {
 
     //商品控制器
     Route::resource('/item','Admin\ItemController');
+    //删除某张商品图片
+    Route::post('/itemDelImg','Admin\ItemController@itemDelImg');
 
     //单页控制器
     Route::resource('/page','Admin\PageController');
@@ -83,6 +98,9 @@ Route::group(['middleware' => 'AdminAuth','prefix' => 'adminapi'], function () {
 
     //前台用户控制器
     Route::resource('/indexUser','Admin\IndexUserController');
+
+    //单页控制器
+    Route::resource('/order','Admin\OrderController');
 
     //图片上传入口
     Route::group(['prefix' => 'uploadapi'], function () {

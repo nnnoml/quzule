@@ -104,4 +104,26 @@ class ItemController extends Controller
             returnJson(0,'权限不足');
         }
     }
+
+    //删除指定图片
+    public function itemDelImg(Request $request){
+        //参数验证
+        $rules = [
+            'id' => 'required|numeric',
+            'url' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            returnJson(0,json_encode($validator->messages()));
+        }
+        else{
+            $id = $request->input('id',0);
+            $url = $request->input('url',0);
+            if(file_exists(public_path().'/'.$url)){
+                unlink(public_path().'/'.$url);
+            }
+            ItemImg::deleteImg($id,$url);
+            returnJson(1,'成功');
+        }
+    }
 }

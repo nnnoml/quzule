@@ -360,22 +360,6 @@ $(".upload_list").click(function(){
                     });
                 } else {
                     $wrap.css( 'filter', 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+ (~~((file.rotation/90)%4 + 4)%4) +')');
-                    // use jquery animate to rotation
-                    // $({
-                    //     rotation: rotation
-                    // }).animate({
-                    //     rotation: file.rotation
-                    // }, {
-                    //     easing: 'linear',
-                    //     step: function( now ) {
-                    //         now = now * Math.PI / 180;
-
-                    //         var cos = Math.cos( now ),
-                    //             sin = Math.sin( now );
-
-                    //         $wrap.css( 'filter', "progid:DXImageTransform.Microsoft.Matrix(M11=" + cos + ",M12=" + (-sin) + ",M21=" + sin + ",M22=" + cos + ",SizingMethod='auto expand')");
-                    //     }
-                    // });
                 }
 
 

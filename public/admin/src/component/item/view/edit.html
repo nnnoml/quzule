@@ -25,7 +25,7 @@
     <div class="form-group">
         <label>商品总价</label>
         <div class="input-group col-md-4">
-            <span class="input-group-addon" id="basic-addon1">￥</span>
+            <span class="input-group-addon">￥</span>
             <input type="text" class="form-control" name="item_price" placeholder="商品总价" required>
         </div>
     </div>
@@ -33,7 +33,7 @@
     <div class="form-group">
         <label>商品租赁价</label>
         <div class="input-group col-md-4">
-            <span class="input-group-addon" id="basic-addon1">￥</span>
+            <span class="input-group-addon">￥</span>
             <input type="text" class="form-control" name="item_rent_price" placeholder="商品租赁价" >
         </div>
     </div>
@@ -58,15 +58,15 @@
     <input type="hidden" name="item_img" id="item_img" value='' />
     <div class="form-group">
         <label>商品图片</label>
-        <div id="warpper_back"></div>
+        <div id="warpper_back" style="overflow:hidden;"></div>
         <div id="wrapper">
             <div id="container">
                 <!--头部，相册选择和格式选择-->
     
-                <div id="uploader">
+                <div class="uploader" id="uploader">
                     <div class="queueList">
                         <div id="dndArea" class="placeholder">
-                            <div id="filePicker"></div>
+                            <div id="filePicker" class="upload_list"></div>
                             <p>或将照片拖到这里，单次最多可选10张</p>
                         </div>
                     </div>

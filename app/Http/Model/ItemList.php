@@ -85,7 +85,10 @@ class ItemList extends Model
         DB::beginTransaction();
         $res1 = self::where('id',$id)->update($update);
         if(isset($data['item_img'])){
-            $res2 = ItemImg::where('item_id',$id)->delete();
+            if(ItemImg::where('item_id',$id)->count())
+                $res2 = ItemImg::where('item_id',$id)->delete();
+            else
+                $res2 = 1;
             $res3 = itemImg::insertImg($id,$data['item_img']);
         }
         else {

@@ -16,12 +16,18 @@ class IndexApply extends Model
 
             'wenhua_input' => rtrim($data['wenhua_input'],','),
             'xiaofang_input' => rtrim($data['xiaofang_input'],','),
+            'wangjian_input' => rtrim($data['wangjian_input'],','),
             'kuandai_input' => rtrim($data['kuandai_input'],','),
             'zufang_input' => rtrim($data['zufang_input'],','),
             'mentou_input' => rtrim($data['mentou_input'],','),
             'neibu_input' => rtrim($data['neibu_input'],','),
             'xiaofangtongdao_input' => rtrim($data['xiaofangtongdao_input'],','),
             'zhengxin_input' => rtrim($data['zhengxin_input'],','),
+
+            'other1_input' => rtrim($data['other1_input'],','),
+            'other2_input' => rtrim($data['other2_input'],','),
+            'other3_input' => rtrim($data['other3_input'],','),
+
             'monitor_account' => trim($data['monitor_account']),
             'mark' => addslashes($data['mark']),
 
@@ -37,7 +43,7 @@ class IndexApply extends Model
     public static function updateApply($id,$data){
         $update = [
             'check_status'=>$data['check_status'],
-            'check_user_id'=>session()->get('user_id'),
+            'check_user_id'=>session()->get('admin_user_id'),
             'checked_at'=>date('Y-m-d H:i:s'),
         ];
         return self::where('id',$id)->update($update);
@@ -63,6 +69,7 @@ class IndexApply extends Model
                     case 0: $list[$key]['check_status_cn'] = '待审核';break;
                     case 1: $list[$key]['check_status_cn'] = '通过';break;
                     case 2: $list[$key]['check_status_cn'] = '驳回';break;
+                    case 3: $list[$key]['check_status_cn'] = '通过但需要完善';break;
                 }
                 $list[$key]['area_img'] = explode(',',$vo['area_img']);
             }

@@ -136,3 +136,9 @@ body {
     margin-top: 120px;
   }
 }
+
+.money{ font-size:14px;}
+.red{ color:#DE4037;}
+.day_price{ font-size:25px; margin-right:10px;}
+.month_price{ font-size:25px; margin-right:10px;}
+.total_value{ font-size:16px;}

@@ -1,0 +1,55 @@
+<script>
+    jsSrc('order','edit');
+</script>
+
+<fieldset>
+    <legend>查看订单</legend>
+    </fieldset>
+    <div class="form-group">
+      <label>订单编号</label>
+      <div class="input-group col-md-4">
+        <input type="text" class="form-control" name="order_id" placeholder="订单编号" required readonly>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>送达地址</label>
+      <div class="input-group col-md-4">
+        <input type="text" class="form-control" name="address" placeholder="送达地址" required readonly>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>创建时间</label>
+      <div class="input-group col-md-4">
+        <input type="text" class="form-control" name="created_at" placeholder="创建时间" required readonly>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>订单明细</label>
+      <div class="input-group col-md-4" id="detail">
+        
+      </div>
+    </div>
+
+    <form class="form-horizontal" id="data">
+      <input type="hidden" name="order_status" id="order_status" value='0' />
+      <div class="form-group">
+      <label>修改状态</label>
+      <div class="btn-group btn-toggle"> 
+          <a class="btn btn-sm btn-default" data='1'>下单</a>
+          <a class="btn btn-sm btn-default" data='2'>取消</a>
+          <a class="btn btn-sm btn-default" data='3'>确认订单</a>
+      </div>
+      </div>
+  
+      <div class="form-group">
+        <div class="">
+          <button type="button" id="showDoc" class="btn btn-default">查看支付表</button>
+          <button type="submit" class="btn btn-default">保存</button>
+        </div>
+      </div>
+    </form>
+
+  </form>

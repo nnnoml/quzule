@@ -27,4 +27,8 @@ class ItemImg extends Model
     public static function getImgList($id){
         return self::where('item_id',$id)->get();
     }
+
+    public static function deleteImg($id,$url){
+        return self::where('item_id',$id)->where('img_url',$url)->delete();
+    }
 }

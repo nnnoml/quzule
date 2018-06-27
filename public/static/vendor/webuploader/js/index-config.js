@@ -60,12 +60,17 @@ $(function(){
         uploader.addButton({id: '#license_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#wenhua_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#xiaofang_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#wangjian_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#kuandai_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#zufang_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#mentou_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#neibu_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#xiaofangtongdao_input',innerHTML: '',multiple: false});
         uploader.addButton({id: '#zhengxin_input',innerHTML: '',multiple: false});
+
+        uploader.addButton({id: '#other1_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#other2_input',innerHTML: '',multiple: false});
+        uploader.addButton({id: '#other3_input',innerHTML: '',multiple: false});
 
         uploader.addButton({id: '#legal_person_card_front',innerHTML: '',multiple: false});
         uploader.addButton({id: '#legal_person_card_back',innerHTML: '',multiple: false});
@@ -111,7 +116,7 @@ $(function(){
             $li.remove();
             return;
         });
-        if(now_pick == 'wenhua_input' || now_pick == 'xiaofang_input')
+        if(now_pick == 'wenhua_input' || now_pick == 'xiaofang_input' || now_pick == 'wangjian_input')
             $("#"+now_pick+"_uploader > ul").html($li);
         else
             $li.appendTo($("#"+now_pick+"_uploader > ul"));
@@ -137,8 +142,8 @@ $(function(){
         uploader.on( 'uploadSuccess', function( file,response ) {
             if(response.state != 'SUCCESS') return;
             var input_handle = $("input[name='"+now_pick+"']");
-            //营业执照，法人照片，文化许可证，消防许可证 唯一
-            if(now_pick == 'license_input' || now_pick == 'wenhua_input' || now_pick == 'xiaofang_input' || now_pick == 'legal_person_card_front' || now_pick == 'legal_person_card_back')
+            //营业执照，法人照片，文化许可证，消防许可证 网监证 唯一
+            if(now_pick == 'license_input' || now_pick == 'wenhua_input' || now_pick == 'xiaofang_input' || now_pick == 'wangjian_input' || now_pick == 'legal_person_card_front' || now_pick == 'legal_person_card_back')
                 var img_input = '';
             else
                 var img_input = input_handle.val();
